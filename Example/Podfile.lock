@@ -1,0 +1,16 @@
+PODS:
+  - iOSKit (0.1.0)
+
+DEPENDENCIES:
+  - iOSKit (from `../`)
+
+EXTERNAL SOURCES:
+  iOSKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  iOSKit: 810fa0baa42ea2f1f64f3d15d504f657ba1d552d
+
+PODFILE CHECKSUM: 53014bf7067a5fd407866e46b641009fd165c39a
+
+COCOAPODS: 1.3.1

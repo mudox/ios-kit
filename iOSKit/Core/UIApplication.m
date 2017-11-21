@@ -68,7 +68,8 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 
 - (void)mdx_greet
 {
-  NSString *appName          = [theBundle objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleNameKey];
+// NSString *appName          = [theBundle objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleNameKey];
+  NSString *appName          = NSProcessInfo.processInfo.processName;
   NSString *bundleIdentifier = theBundle.bundleIdentifier;
   NSString *version          = [theBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
   NSString *build            = [theBundle objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleVersionKey];
@@ -81,27 +82,26 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 
   NSString *lines = [
     @[
-      [NSString stringWithFormat:@"App %@] launched", appName ],
+      @"[App]",
+      [NSString stringWithFormat:@" bundle identifier: %@", bundleIdentifier],
+      [NSString stringWithFormat:@"   release version: %@", version],
+      [NSString stringWithFormat:@"     build version: %@", build],
+      [NSString stringWithFormat:@"     is debug mode: %@", isDebugMode],
 
-      @">> [App]",
-      [NSString stringWithFormat:@">>   bundle identifier: %@", bundleIdentifier],
-      [NSString stringWithFormat:@">>     release version: %@", version],
-      [NSString stringWithFormat:@">>       build version: %@", build],
-      [NSString stringWithFormat:@">>       is debug mode: %@", isDebugMode],
+      @"[Device]",
+      [NSString stringWithFormat:@"       device name: %@", deviceName],
+      [NSString stringWithFormat:@"      device model: %@", deviceModel],
+      [NSString stringWithFormat:@"      is simulator: %@", isSimulator],
 
-      @">> [Device]",
-      [NSString stringWithFormat:@">>         device name: %@", deviceName],
-      [NSString stringWithFormat:@">>        device model: %@", deviceModel],
-      [NSString stringWithFormat:@">>        is simulator: %@", isSimulator],
-
-      @">> [System]",
-      [NSString stringWithFormat:@">>         system name: %@", systemName],
-      [NSString stringWithFormat:@">>      system version: %@", systemVersion],
+      @"[System]",
+      [NSString stringWithFormat:@"       system name: %@", systemName],
+      [NSString stringWithFormat:@"    system version: %@", systemVersion],
 
       @"\n",
     ] componentsJoinedByString: @"\n"];
 
-  DDLogInfo(@"%@", lines);
+  NSString *prefix = [NSString stringWithFormat:@"App %@ launched", appName];
+  JackInfoWithPrefix(prefix, @"%@", lines);
 }
 
 - (BOOL)mdx_isInDebugMode
@@ -114,3 +114,5 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 }
 
 @end
+
+

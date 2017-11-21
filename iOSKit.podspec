@@ -1,42 +1,63 @@
-#
-# Be sure to run `pod lib lint iOSKit.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
+  #
+  # Pod Basic Info
+  #
+
   s.name             = 'iOSKit'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of iOSKit.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.summary          = 'My iOS extension library'
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  My iOS app development toolbox
+  DESC
 
-  s.homepage         = 'https://github.com/mudox/iOSKit'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  #
+  # Author Info
+  #
+
+  s.homepage         = 'https://github.com/mudox/ios-kit'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'mudox' => 'mudoxisme@gmail.com' }
-  s.source           = { :git => 'https://github.com/mudox/iOSKit.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = 'Mudox'
+  s.source           = { :git => 'https://github.com/mudox/ios-kit.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
-  s.source_files = 'iOSKit/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'iOSKit' => ['iOSKit/Assets/*.png']
-  # }
+  #
+  # Pod Payload
+  #
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.default_subspec = 'Core'
+
+
+  s.subspec 'MBProgressHUD-Swift' do |ss|
+    ss.source_files = 'iOSKit/MBProgressHUD/MPB.swift'
+    ss.dependency 'MBProgressHUD', '~> 1.0'
+  end
+
+  s.subspec 'MBProgressHUD-OC' do |ss|
+    ss.source_files = 'iOSKit/MBProgressHUD/**/*.{m,h}'
+    ss.dependency 'MBProgressHUD', '~> 1.0'
+  end
+
+  s.subspec 'SVProgressHUD' do |ss|
+  ss.source_files = 'iOSKit/SVProgressHUD/**/*'
+  ss.dependency 'SVProgressHUD'
+  end
+
+  s.subspec 'SwiftyJSON' do |ss|
+    ss.source_files = 'iOSKit/SwiftyJSON/**/*'
+    ss.dependency 'SwiftyJSON'
+  end
+
+
+  s.subspec 'PromiseKit' do |ss|
+    ss.source_files = 'iOSKit/PromiseKit/**/*'
+    ss.dependency 'PromiseKit'
+  end
+
+  s.subspec 'RxSwift' do |ss|
+    ss.source_files = 'iOSKit/RxSwift/**/*'
+    ss.dependency 'RxSwift'
+    ss.dependency 'RxCocoa'
+  end
 end

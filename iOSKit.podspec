@@ -28,6 +28,17 @@ Pod::Spec.new do |s|
 
   s.default_subspec = 'Core'
 
+  s.subspec 'Core' do |core|
+    core.source_files = 'iOSKit/Core/**/*'
+
+    core.dependency 'JacKit'
+  end
+
+  s.subspec 'Basic' do |core|
+    core.dependency 'iOSKit/Core'
+    core.dependency 'iOSKit/PromiseKit'
+    core.dependency 'iOSKit/RxSwift'
+  end
 
   s.subspec 'MBProgressHUD-Swift' do |ss|
     ss.source_files = 'iOSKit/MBProgressHUD/MPB.swift'

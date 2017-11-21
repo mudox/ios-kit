@@ -22,7 +22,7 @@ pod 'iOSKit'
 
 ## Author
 
-mudox, mudoxisme@gmail.com
+mudox
 
 ## License
 

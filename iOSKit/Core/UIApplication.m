@@ -8,7 +8,6 @@
 
 @import JacKit;
 
-#import "The.h"
 
 #ifdef DEBUG
 static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
@@ -52,6 +51,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
     UIApplicationWillChangeStatusBarFrameNotification: @"will change status bar frame",
     UIApplicationDidChangeStatusBarFrameNotification: @"did change status bar frame",
 
+    // background refresh
     UIApplicationBackgroundRefreshStatusDidChangeNotification: @"did change background refresh status",
 
     // protected data
@@ -61,7 +61,7 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 
   [dict enumerateKeysAndObjectsUsingBlock:^(id _Nonnull name, id _Nonnull text, BOOL * _Nonnull stop) {
      [center addObserverForName:name object:[UIApplication sharedApplication] queue:nil usingBlock:^(NSNotification *_Nonnull note) {
-        DDLogWarn(@"Application State] %@", text);
+       JackDebugWithPrefix(@"App state changed", @"%@", text);
       }];
    }];
 }

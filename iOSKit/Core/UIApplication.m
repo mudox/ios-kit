@@ -61,41 +61,45 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 
   [dict enumerateKeysAndObjectsUsingBlock:^(id _Nonnull name, id _Nonnull text, BOOL * _Nonnull stop) {
      [center addObserverForName:name object:[UIApplication sharedApplication] queue:nil usingBlock:^(NSNotification *_Nonnull note) {
-       JackDebugWithPrefix(@"App state changed", @"%@", text);
+        JackDebugWithPrefix(@"App state changed", @"%@", text);
       }];
    }];
 }
 
 - (void)mdx_greet
 {
-// NSString *appName          = [theBundle objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleNameKey];
-  NSString *appName          = NSProcessInfo.processInfo.processName;
-  NSString *bundleIdentifier = theBundle.bundleIdentifier;
-  NSString *version          = [theBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-  NSString *build            = [theBundle objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleVersionKey];
-  NSString *deviceName       = theDevice.name;
-  NSString *deviceModel      = theDevice.localizedModel;
-  NSString *isDebugMode      = BOOLSYMBOL(theApp.mdx_isInDebugMode);
-  NSString *isSimulator      = BOOLSYMBOL(theDevice.mdx_isSimulator);
-  NSString *systemName       = theDevice.systemName;
-  NSString *systemVersion    = theDevice.systemVersion;
+  NSString *appName    = NSProcessInfo.processInfo.processName;
+  NSString *appID      = theBundle.bundleIdentifier;
+  NSString *appVersion = [theBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+  NSString *appBuild   = [theBundle objectForInfoDictionaryKey:(__bridge NSString *)kCFBundleVersionKey];
+
+  NSString *deviceName  = theDevice.name;
+  NSString *deviceModel = theDevice.localizedModel;
+  NSString *deviceUUID = [theDevice.identifierForVendor UUIDString];
+
+  NSString *isDebugMode = BOOLSYMBOL(theApp.mdx_isInDebugMode);
+  NSString *isSimulator = BOOLSYMBOL(theDevice.mdx_isSimulator);
+
+  NSString *systemName    = theDevice.systemName;
+  NSString *systemVersion = theDevice.systemVersion;
 
   NSString *lines = [
     @[
       @"[App]",
-      [NSString stringWithFormat:@" bundle identifier: %@", bundleIdentifier],
-      [NSString stringWithFormat:@"   release version: %@", version],
-      [NSString stringWithFormat:@"     build version: %@", build],
-      [NSString stringWithFormat:@"     is debug mode: %@", isDebugMode],
+      [NSString stringWithFormat:@"  - ID:                %@", appID],
+      [NSString stringWithFormat:@"  - Release:           %@", appVersion],
+      [NSString stringWithFormat:@"  - Build:             %@", appBuild],
+      [NSString stringWithFormat:@"  - Debug:             %@", isDebugMode],
 
       @"[Device]",
-      [NSString stringWithFormat:@"       device name: %@", deviceName],
-      [NSString stringWithFormat:@"      device model: %@", deviceModel],
-      [NSString stringWithFormat:@"      is simulator: %@", isSimulator],
+      [NSString stringWithFormat:@"  - Name:              %@", deviceName],
+      [NSString stringWithFormat:@"  - Model:             %@", deviceModel],
+      [NSString stringWithFormat:@"  - UUID:              %@", deviceUUID],
+      [NSString stringWithFormat:@"  - Simulator:         %@", isSimulator],
 
       @"[System]",
-      [NSString stringWithFormat:@"       system name: %@", systemName],
-      [NSString stringWithFormat:@"    system version: %@", systemVersion],
+      [NSString stringWithFormat:@"  - Name:              %@", systemName],
+      [NSString stringWithFormat:@"  - Version:           %@", systemVersion],
 
       @"\n",
     ] componentsJoinedByString: @"\n"];
@@ -114,5 +118,3 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
 }
 
 @end
-
-

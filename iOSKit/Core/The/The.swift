@@ -36,7 +36,7 @@ public enum The {
   }
 
   /**
-    UIApplication.shared.windows.first
+    **UIApplication.shared.windows.first**, while **UIApplication.shared.keyWindow** may be attached external window.
     - important: Make sure the window is already created before access or
       the app would crash for nil unwrap
   */
@@ -63,7 +63,7 @@ public enum The {
 
 // MARK: - Project Specific Assets
 extension The {
-  
+
   /// The namespace to unique user defaults key names
   public enum UserDefaultsKey { }
 
@@ -88,14 +88,6 @@ extension The {
 
     public static var screenHeight: CGFloat {
       return The.mainScreen.bounds.height
-    }
-
-    public static var isRunningOnSimulator: Bool {
-      return The.device.mdx_isSimulator
-    }
-
-    public static var isDebugModeEnabled: Bool {
-      return The.app.mdx_isInDebugMode
     }
 
   }

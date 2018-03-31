@@ -24,25 +24,14 @@
       "dependencies": {
         "JacKit": [
 
-        ]
-      }
-    },
-    {
-      "name": "Basic",
-      "dependencies": {
-        "iOSKit/Core": [
-
         ],
-        "iOSKit/PromiseKit": [
-
-        ],
-        "iOSKit/RxSwift": [
+        "RxSwift": [
 
         ]
       }
     },
     {
-      "name": "MBProgressHUD-Swift",
+      "name": "MBP",
       "source_files": "iOSKit/MBProgressHUD/MPB.swift",
       "dependencies": {
         "MBProgressHUD": [
@@ -51,16 +40,7 @@
       }
     },
     {
-      "name": "MBProgressHUD-OC",
-      "source_files": "iOSKit/MBProgressHUD/**/*.{m,h}",
-      "dependencies": {
-        "MBProgressHUD": [
-          "~> 1.0"
-        ]
-      }
-    },
-    {
-      "name": "SVProgressHUD",
+      "name": "SVP",
       "source_files": "iOSKit/SVProgressHUD/**/*",
       "dependencies": {
         "SVProgressHUD": [
@@ -73,27 +53,6 @@
       "source_files": "iOSKit/SwiftyJSON/**/*",
       "dependencies": {
         "SwiftyJSON": [
-
-        ]
-      }
-    },
-    {
-      "name": "PromiseKit",
-      "source_files": "iOSKit/PromiseKit/**/*",
-      "dependencies": {
-        "PromiseKit": [
-
-        ]
-      }
-    },
-    {
-      "name": "RxSwift",
-      "source_files": "iOSKit/RxSwift/**/*",
-      "dependencies": {
-        "RxSwift": [
-
-        ],
-        "RxCocoa": [
 
         ]
       }

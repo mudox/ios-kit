@@ -32,25 +32,15 @@ Pod::Spec.new do |s|
     core.source_files = 'iOSKit/Core/**/*'
 
     core.dependency 'JacKit'
+    core.dependency 'RxSwift'
   end
 
-  s.subspec 'Basic' do |core|
-    core.dependency 'iOSKit/Core'
-    core.dependency 'iOSKit/PromiseKit'
-    core.dependency 'iOSKit/RxSwift'
-  end
-
-  s.subspec 'MBProgressHUD-Swift' do |ss|
+  s.subspec 'MBP' do |ss|
     ss.source_files = 'iOSKit/MBProgressHUD/MPB.swift'
     ss.dependency 'MBProgressHUD', '~> 1.0'
   end
 
-  s.subspec 'MBProgressHUD-OC' do |ss|
-    ss.source_files = 'iOSKit/MBProgressHUD/**/*.{m,h}'
-    ss.dependency 'MBProgressHUD', '~> 1.0'
-  end
-
-  s.subspec 'SVProgressHUD' do |ss|
+  s.subspec 'SVP' do |ss|
   ss.source_files = 'iOSKit/SVProgressHUD/**/*'
   ss.dependency 'SVProgressHUD'
   end
@@ -60,15 +50,4 @@ Pod::Spec.new do |s|
     ss.dependency 'SwiftyJSON'
   end
 
-
-  s.subspec 'PromiseKit' do |ss|
-    ss.source_files = 'iOSKit/PromiseKit/**/*'
-    ss.dependency 'PromiseKit'
-  end
-
-  s.subspec 'RxSwift' do |ss|
-    ss.source_files = 'iOSKit/RxSwift/**/*'
-    ss.dependency 'RxSwift'
-    ss.dependency 'RxCocoa'
-  end
 end

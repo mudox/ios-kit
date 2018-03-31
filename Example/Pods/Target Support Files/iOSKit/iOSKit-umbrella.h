@@ -14,7 +14,6 @@
 #import "CG.h"
 #import "NSString.h"
 #import "The.h"
-#import "UIApplication.h"
 #import "UICollectionView.h"
 #import "UITableView.h"
 #import "UITextField.h"

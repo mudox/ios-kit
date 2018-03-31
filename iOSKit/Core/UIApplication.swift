@@ -84,8 +84,8 @@ extension Mudoxive where Base: UIApplication {
       [App]
         - Name:              \(The.processInfo.processName)
         - ID:                \(The.mainBundle.bundleIdentifier ?? "N/A")
-        - Release:           \(The.mainBundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") ?? "N/A")
-        - Build:             \(The.mainBundle.object(forInfoDictionaryKey: "CFBundleVersionKey") ?? "N/A")
+        - Release:           \(The.mainBundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") ?? "N/A")  (CFBundleShortVersionString)
+        - Build:             \(The.mainBundle.object(forInfoDictionaryKey: kCFBundleVersionKey as String) ?? "N/A") (kCFBundleVersionKey)
         - Debug:             \(The.app.mdx.isRunningInDebugMode)
         - Simulator:         \(The.app.mdx.isRunningOnSimulator)
       [Device]

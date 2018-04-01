@@ -9,7 +9,7 @@
 import Foundation
 
 extension Bool {
-  public mutating func mdx_toggle() {
+  public mutating func toggle() {
     self = !self
   }
 }

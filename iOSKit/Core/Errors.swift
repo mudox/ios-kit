@@ -8,19 +8,19 @@
 
 import Foundation
 
-public enum MKError: Error {
+public enum GeneralError: Error {
 
-  case assert(String)
-  case result(Any?, expect: Any?)
-  case nilSelf
+  case precondition(String)
+  case unexpected(result: Any?, expect: Any?)
+  case weakReleased
 
   var localizedDescription: String {
     switch self {
-    case let .assert(description):
-      return "assertion failed: \(description)"
-    case let .result(got, expect: want):
+    case let .precondition(description):
+      return "precondition failure: \(description)"
+    case let .unexpected(result: got, expect: want):
       return "unexpected result:\nexpect: \(String(describing: want))\ngot: \(String(describing: got))"
-    case .nilSelf:
+    case .weakReleased:
       return "self is released"
     }
   }

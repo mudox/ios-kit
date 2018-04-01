@@ -18,7 +18,7 @@ public enum UIAlertControllerError: Error {
 
 extension Mudoxive where Base: UIAlertController {
 
-  public static func parse(_ layout: String) -> (
+  public static func parse(layout: String) -> (
     title: String?,
     message: String?,
     buttonTitle: [String]
@@ -81,7 +81,7 @@ extension Mudoxive where Base: UIAlertController {
   }
 
   public static func simpleAlert(layout: String) -> Completable {
-    guard let (title, message, buttonTitles) = parse(layout) else {
+    guard let (title, message, buttonTitles) = parse(layout: layout) else {
       return Completable.error(UIAlertControllerError.parseFailure)
     }
 

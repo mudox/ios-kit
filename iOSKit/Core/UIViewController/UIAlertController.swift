@@ -12,7 +12,7 @@ import JacKit
 fileprivate let jack = Jack.with(levelOfThisFile: .debug)
 
 public enum UIAlertControllerError: Error {
-  case parseFailure
+  case layoutParseFailure
   case noRootViewController
 }
 
@@ -21,13 +21,13 @@ extension Mudoxive where Base: UIAlertController {
   public static func parse(layout: String) -> (
     title: String?,
     message: String?,
-    buttonTitle: [String]
+    actions: [(title: String, style: UIAlertActionStyle)]
   )?
   {
     let titlePattern = "([^:]+?)"
     let messagePattern = "(?::([^:]+?))"
-    let buttonPattern = "(?:->([^|]+(?:\\|([^|].+))?))"
-    let regexString = "^\(titlePattern)?\(messagePattern)?\(buttonPattern)?$"
+    let actionsPattern = "(?:->([^|]+(?:\\|([^|].+))?))"
+    let regexString = "^\(titlePattern)?\(messagePattern)?\(actionsPattern)?$"
     do {
       let regex = try NSRegularExpression(pattern: regexString, options: [])
       let matchOrNil = regex.firstMatch(in: layout, options: [], range: NSRange(location: 0, length: layout.count))
@@ -53,14 +53,26 @@ extension Mudoxive where Base: UIAlertController {
         message = (layout as NSString).substring(with: range)
       }
 
-      // button title(s)
-      var buttonTitles: [String]
+      // action title(s) and styles
+      var actions: [(title: String, style: UIAlertActionStyle)]
       range = match.range(at: 3)
       if range.location == NSNotFound {
-        buttonTitles = ["OK"]
+        actions = [("OK", .default)]
       } else {
         let group = (layout as NSString).substring(with: range)
-        buttonTitles = (group as String).split(separator: "|").map { String($0) }
+        actions = group
+          .split(separator: "|")
+          .map { String($0) }
+          .map { spec in
+            if spec.hasSuffix("[c]") {
+              return (String(spec.dropLast(3)), .cancel)
+            } else if spec.hasSuffix("[d]") {
+              return (String(spec.dropLast(3)), .destructive)
+            } else {
+              return (spec, .default)
+            }
+        }
+
       }
 
       if title != nil && title!.starts(with: "->") {
@@ -73,7 +85,7 @@ extension Mudoxive where Base: UIAlertController {
         return nil
       }
 
-      return (title: title, message: message, buttonTitle: buttonTitles)
+      return (title: title, message: message, actions: actions)
     } catch {
       jack.error("Failed to initialize regex: \(error)")
       return nil
@@ -81,14 +93,14 @@ extension Mudoxive where Base: UIAlertController {
   }
 
   public static func simpleAlert(layout: String) -> Completable {
-    guard let (title, message, buttonTitles) = parse(layout: layout) else {
-      return Completable.error(UIAlertControllerError.parseFailure)
+    guard let (title, message, actions) = parse(layout: layout) else {
+      return Completable.error(UIAlertControllerError.layoutParseFailure)
     }
 
     return Completable.create { completable in
       // construct alert controller
       let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-      let action = UIAlertAction(title: buttonTitles.first!, style: .default) { _ in
+      let action = UIAlertAction(title: actions.first!.title, style: .default) { _ in
         completable(.completed)
       }
       alert.addAction(action)
@@ -108,4 +120,28 @@ extension Mudoxive where Base: UIAlertController {
     }
   }
 
+  public static func actionSheet(layout: String) -> Single<String> {
+    guard let (title, message, actions) = parse(layout: layout) else {
+      return Single.error(UIAlertControllerError.layoutParseFailure)
+    }
+
+    return Single.create { single in
+      // construct alert controller
+      let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      actions.forEach { action in
+        alert.addAction(UIAlertAction(title: action.title, style: action.style, handler: { _ in
+          single(.success(action.title))
+        }))
+      }
+
+      // present by root view controller
+      guard let viewController = The.mainWindow.rootViewController else {
+        single(.error(UIAlertControllerError.noRootViewController))
+        return Disposables.create()
+      }
+      viewController.present(alert, animated: true, completion: nil)
+
+      return Disposables.create()
+    }
+  }
 }

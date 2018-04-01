@@ -46,6 +46,10 @@ Pod::Spec.new do |s|
   ss.dependency 'SVProgressHUD'
   end
 
+  s.subspec 'OC' do |ss|
+  ss.source_files = 'iOSKit/OC/**/*'
+  end
+
   s.subspec 'SwiftyJSON' do |ss|
     ss.source_files = 'iOSKit/SwiftyJSON/**/*'
     ss.dependency 'SwiftyJSON'

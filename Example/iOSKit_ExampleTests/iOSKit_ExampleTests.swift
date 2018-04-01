@@ -37,25 +37,28 @@ class iOSKit_ExampleTests: XCTestCase {
   }
 
   func test_alertController_parseSpec() {
-    let inputAndOutputs: [String: (title: String?, message: String?, buttonTitle: [String])?] = [
-      "title only": (title: "title only", message: nil, buttonTitle: ["OK"]),
-      ":message only": (title: nil, message: "message only", buttonTitle: ["OK"]),
-      "->button title only": nil,
-      "title->button title": (title: "title", message: nil, buttonTitle: ["button title"]),
-      ":message->button title": (title: nil, message: "message", buttonTitle: ["button title"]),
-      ":2 buttons->button1|button2": (title: nil, message: "2 buttons", buttonTitle: ["button1", "button2"]),
-      "3 buttons->button1|button2|button3": (title: "3 buttons", message: nil, buttonTitle: ["button1", "button2", "button3"]),
+    let inputAndOutputs: [String: (title: String?, message: String?, actions: [String])?] = [
+      "title only": (title: "title only", message: nil, actions: ["OK"]),
+      ":message only": (title: nil, message: "message only", actions: ["OK"]),
+      "->action title only": nil,
+      "title->action title": (title: "title", message: nil, actions: ["action title"]),
+      ":message->action title": (title: nil, message: "message", actions: ["action title"]),
+      ":2 actions->action1|action2": (title: nil, message: "2 actions", actions: ["action1", "action2"]),
+      "3 actions->action1|action2|action3": (title: "3 actions", message: nil, actions: ["action1", "action2", "action3"]),
     ]
 
     for (input, output) in inputAndOutputs {
       print(">> input: \(input)")
+      let result = UIAlertController.mdx.parse(layout: input)
+      
       if output == nil {
-        XCTAssert(UIAlertController.mdx.parsePattern(input) == nil)
+        XCTAssert(result == nil)
       } else {
-        let result = UIAlertController.mdx.parsePattern(input)!
-        XCTAssert(result.title == output!.title)
-        XCTAssert(result.message == output!.message)
-        XCTAssert(result.buttonTitle == output!.buttonTitle)
+        let r = result!
+        XCTAssert(!r.actions.isEmpty)
+        XCTAssert(r.title == output!.title)
+        XCTAssert(r.message == output!.message)
+        XCTAssert(r.actions == output!.actions)
       }
     }
 

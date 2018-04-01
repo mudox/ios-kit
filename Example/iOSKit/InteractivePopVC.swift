@@ -28,14 +28,13 @@ class InteractivePopVC: FormViewController {
     for style in ["none", "inherit", "edge", "anywhere"] {
       let row = ButtonRow() { $0.title = style }
         .cellSetup { cell, row in
-          cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
-          cell.textLabel?.textAlignment = .left
+//          cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
           cell.selectionStyle = .default
           cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }.cellUpdate { [weak self] cell, row in
           guard let ss = self else { return }
           if ss.popStyle == style {
-            cell.textLabel?.textColor = .green
+            cell.textLabel?.textColor = .black
           } else {
             cell.textLabel?.textColor = .lightGray
           }

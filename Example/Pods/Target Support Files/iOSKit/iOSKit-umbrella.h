@@ -10,7 +10,6 @@
 #endif
 #endif
 
-#import "MDXNavigationController.h"
 
 FOUNDATION_EXPORT double iOSKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char iOSKitVersionString[];

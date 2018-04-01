@@ -19,16 +19,16 @@ class MainVC: FormViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    
+
     form
       +++ alertSection
       +++ navSection
   }
 
   var cellSetup = { (cell: ButtonCell, row: ButtonRow) -> Void in
-//    cell.height = { 36 }
+//    cell.height = { 32 }
 //    cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
   }
 
@@ -38,7 +38,7 @@ class MainVC: FormViewController {
       .cellSetup(cellSetup)
       .onCellSelection { [weak self] cell, row in
         guard let ss = self else { return }
-        UIAlertController.mdx.simpleAlert(layout: "Test->Pass")
+        UIAlertController.mdx.simpleAlert(layout: "Simple Alert->Dismiss")
           .asObservable()
           .take(5, scheduler: MainScheduler.instance)
           .asCompletable()

@@ -33,6 +33,7 @@ Pod::Spec.new do |s|
 
     core.dependency 'JacKit'
     core.dependency 'RxSwift'
+    core.dependency 'RxCocoa'
   end
 
   s.subspec 'MBP' do |ss|

@@ -6,9 +6,12 @@ PODS:
     - iOSKit/Core (= 0.1.0)
   - iOSKit/Core (0.1.0):
     - JacKit
+    - RxCocoa
     - RxSwift
   - JacKit (1.0.0-beta1):
     - CocoaLumberjack/Swift (~> 3.3.0)
+  - RxCocoa (4.1.2):
+    - RxSwift (~> 4.0)
   - RxSwift (4.1.2)
 
 DEPENDENCIES:
@@ -23,8 +26,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 3c8c74683302f9012bb168e1c4b7ae3c0b558431
-  iOSKit: c019e10b2c818ca01120a99df1bfee88ee11018c
+  iOSKit: 926f48019192acc1bd38d0a662089fb5cfc0afde
   JacKit: de46ba528274b33323f5f6c646ecae52c91e9711
+  RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
 
 PODFILE CHECKSUM: 99334fff40976d11b1b2960d03a277d5a1c5d3dd

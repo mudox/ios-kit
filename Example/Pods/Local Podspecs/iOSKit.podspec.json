@@ -52,6 +52,10 @@
       }
     },
     {
+      "name": "OC",
+      "source_files": "iOSKit/OC/**/*"
+    },
+    {
       "name": "SwiftyJSON",
       "source_files": "iOSKit/SwiftyJSON/**/*",
       "dependencies": {

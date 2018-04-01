@@ -13,8 +13,9 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		648B272AD78636D4544D0F9F /* Pods_iOSKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F655282886367D6D7467A393 /* Pods_iOSKit_Example.framework */; };
 		8145C7BBB16FA906A6259682 /* Pods_iOSKit_ExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E299935B9F8BC7D47DFC36 /* Pods_iOSKit_ExampleTests.framework */; };
+		F4AF82FF207104D7000D4802 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF82FE207104D7000D4802 /* MainVC.swift */; };
+		F4AF830420711B93000D4802 /* InteractivePopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF830320711B93000D4802 /* InteractivePopVC.swift */; };
 		F4BA20F320701CBC00A1BEC2 /* iOSKit_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA20F220701CBC00A1BEC2 /* iOSKit_ExampleTests.swift */; };
-		F4BA20FF2070796400A1BEC2 /* MainTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA20FE2070796400A1BEC2 /* MainTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,10 +46,11 @@
 		E73B07AAEEFD49FE2B06B403 /* Pods-iOSKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSKit_Example/Pods-iOSKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		E87A30C662F7D2C025785605 /* Pods-iOSKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSKit_Tests/Pods-iOSKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		F27FBAF898415DBEDE1DFF30 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		F4AF82FE207104D7000D4802 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		F4AF830320711B93000D4802 /* InteractivePopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePopVC.swift; sourceTree = "<group>"; };
 		F4BA20F020701CBC00A1BEC2 /* iOSKit_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSKit_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4BA20F220701CBC00A1BEC2 /* iOSKit_ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSKit_ExampleTests.swift; sourceTree = "<group>"; };
 		F4BA20F420701CBC00A1BEC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F4BA20FE2070796400A1BEC2 /* MainTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewController.swift; sourceTree = "<group>"; };
 		F655282886367D6D7467A393 /* Pods_iOSKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -109,7 +111,8 @@
 		607FACD21AFB9204008FA782 /* Example for iOSKit */ = {
 			isa = PBXGroup;
 			children = (
-				F4BA20FE2070796400A1BEC2 /* MainTableViewController.swift */,
+				F4AF830320711B93000D4802 /* InteractivePopVC.swift */,
+				F4AF82FE207104D7000D4802 /* MainVC.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -338,6 +341,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-iOSKit_Example/Pods-iOSKit_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/JacKit/JacKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -346,6 +350,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JacKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -378,8 +383,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4BA20FF2070796400A1BEC2 /* MainTableViewController.swift in Sources */,
+				F4AF830420711B93000D4802 /* InteractivePopVC.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				F4AF82FF207104D7000D4802 /* MainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

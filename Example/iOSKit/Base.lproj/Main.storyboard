@@ -9,51 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Table View Controller-->
-        <scene sceneID="Rk8-V2-bpz">
-            <objects>
-                <tableViewController id="g9p-8g-9O2" customClass="MainTableViewController" customModule="iOSKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gPz-jv-rfX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="6p0-ku-atc" detailTextLabel="xNW-QX-3S4" rowHeight="59" style="IBUITableViewCellStyleSubtitle" id="HNb-Ni-uLh">
-                                <rect key="frame" x="0.0" y="28" width="320" height="59"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HNb-Ni-uLh" id="f4T-gr-VTb">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="58.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6p0-ku-atc">
-                                            <rect key="frame" x="16" y="9" width="33.5" height="20.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xNW-QX-3S4">
-                                            <rect key="frame" x="16" y="32.5" width="33" height="14.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="L3A-8S-jbh"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P0R-yW-vcq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1162.5" y="-207.04225352112675"/>
-        </scene>
-        <!--Navigation Controller-->
+        <!--Interactive Pop Navigation Controller-->
         <scene sceneID="5al-CZ-MUl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1oa-wF-Fjf" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1oa-wF-Fjf" customClass="InteractivePopNavigationController" customModule="iOSKit" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qgP-cj-kem">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -61,12 +20,55 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="g9p-8g-9O2" kind="relationship" relationship="rootViewController" id="bln-7o-ilW"/>
+                        <segue destination="vTC-6L-nRM" kind="relationship" relationship="rootViewController" id="fa5-jQ-sql"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uV7-Dx-8zH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="341.25" y="-207.04225352112675"/>
+        </scene>
+        <!--iOSKit-->
+        <scene sceneID="KLx-Tx-rvP">
+            <objects>
+                <viewController id="vTC-6L-nRM" customClass="MainVC" customModule="iOSKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6sN-EW-g9T"/>
+                        <viewControllerLayoutGuide type="bottom" id="mCQ-Xu-Tzk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SKB-b9-sVt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="iOSKit" id="dfa-nj-Grs">
+                        <barButtonItem key="backBarButtonItem" title=" " id="yVe-uf-UEh"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="JXO-gT-abd" kind="show" identifier="interactivePopVC" id="Zvz-zo-dMt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Gx-yM-rxx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1206" y="-207"/>
+        </scene>
+        <!--Interactive Pop-->
+        <scene sceneID="JOn-zb-cCv">
+            <objects>
+                <viewController id="JXO-gT-abd" customClass="InteractivePopVC" customModule="iOSKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iUx-ew-Ayd"/>
+                        <viewControllerLayoutGuide type="bottom" id="fIl-gH-8T1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jNh-52-niy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Interactive Pop" id="MEj-5b-u4M"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zzj-6F-NGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2093" y="-207"/>
         </scene>
     </scenes>
 </document>

@@ -1,14 +1,13 @@
 //
-//  iOSKit_ExampleTests.swift
-//  iOSKit_ExampleTests
+//  iOSKitTests.swift
+//  iOSKitTests
 //
 //  Created by Mudox on 02/04/2018.
-//  Copyright © 2018 CocoaPods. All rights reserved.
 //
 
 import XCTest
 
-class iOSKit_ExampleTests: XCTestCase {
+class iOSKitTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

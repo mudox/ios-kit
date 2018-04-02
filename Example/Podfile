@@ -4,8 +4,10 @@ platform :ios, '9.0'
 
 target 'iOSKit_Example' do
 
-  pod 'JacKit', :path => '../../JacKit/'
-  pod 'iOSKit', :path => '../'
+  pod 'JacKit',     :path => '../../JacKit/'
+  pod 'iOSKit',     :path => '../'
+  pod 'iOSKit/MBP', :path => '../'
+  pod 'iOSKit/SVP', :path => '../'
 
   pod 'Eureka'
 

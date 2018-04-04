@@ -7,32 +7,34 @@
 //
 
 import XCTest
+import Nimble
+
 @testable import iOSKit
 
 class MiscTests: XCTestCase {
 
   func test_the() {
-    XCTAssert(The.app == UIApplication.shared)
-    XCTAssert(The.device == UIDevice.current)
-    XCTAssert(The.fileManager == FileManager.default)
-    XCTAssert(The.mainBundle == Bundle.main)
-    XCTAssert(The.mainScreen == UIScreen.main)
-    XCTAssert(The.mainWindow == UIApplication.shared.windows.first!)
-    XCTAssert(The.notificationCenter == NotificationCenter.default)
-    XCTAssert(The.userDefaults == UserDefaults.standard)
+    expect(The.app) == UIApplication.shared
+    expect(The.device) == UIDevice.current
+    expect(The.fileManager) == FileManager.default
+    expect(The.mainBundle) == Bundle.main
+    expect(The.mainScreen) == UIScreen.main
+    expect(The.mainWindow) == UIApplication.shared.windows.first!
+    expect(The.notificationCenter) == NotificationCenter.default
+    expect(The.userDefaults) == UserDefaults.standard
   }
 
   func test_uiApplication() {
-    #if (arch(i386) || arch(x86_64)) && os(iOS)
-      XCTAssert(The.app.mdx.isRunningOnSimulator == true)
+    #if targetEnvironment(simulator)
+      expect(The.app.mdx.isRunningOnSimulator) == true
     #else
-      XCTAssert(The.app.mdx.isRunningOnSimulator == false)
+      expect(The.app.mdx.isRunningOnSimulator) == false
     #endif
 
     #if DEBUG
-      XCTAssert(The.app.mdx.isRunningInDebugMode == true)
+      expect(The.app.mdx.isRunningInDebugMode) == true
     #else
-      XCTAssert(The.app.mdx.isRunningInDebugMode == false)
+      expect(The.app.mdx.isRunningInDebugMode) == false
     #endif
   }
 

@@ -1,4 +1,6 @@
 import XCTest
+import Nimble
+
 @testable import iOSKit
 
 class AlertLayoutTests: XCTestCase {
@@ -13,34 +15,32 @@ class AlertLayoutTests: XCTestCase {
     super.tearDown()
   }
 
+  func test_empty() {
+    let layout = ""
+    expect { _ = try AlertLayout(layout: layout) } .to(throwError())
+  }
+
   func test_onlyTitle() {
     let layout = "title"
-    let expect = AlertLayout(title: "title", message: nil, actions: [.fallback])
+    let expected = AlertLayout(title: "title", message: nil, actions: [.fallback])
     var result: AlertLayout?
-    XCTAssertNoThrow(result = try AlertLayout(layout: layout))
-    XCTAssert(result == expect)
+    expect { result = try AlertLayout(layout: layout) } .toNot(throwError())
+    expect(result) == expected
   }
 
   func test_onlyMessage() {
     let layout = ":message"
-    let expect = AlertLayout(title: nil, message: "message", actions: [.fallback])
+    let expected = AlertLayout(title: nil, message: "message", actions: [.fallback])
     var result: AlertLayout?
-    XCTAssertNoThrow(result = try AlertLayout(layout: layout))
-    XCTAssert(result == expect)
+    expect { result = try AlertLayout(layout: layout) } .toNot(throwError())
+    expect(result) == expected
   }
 
   func test_onlyActions() {
     let layout = "->action1|action2"
-    let message = "Should throw AlertLayout.Errors.needTitleOrMessage"
-    XCTAssertThrowsError(try AlertLayout(layout: layout), message) { error in
-      if case AlertLayout.Errors.needTitleOrMessage = error {
-        XCTAssert(true)
-      } else {
-        XCTFail()
-      }
-    }
+    expect { _ = try AlertLayout(layout: layout) }.to(throwError(AlertLayout.Errors.needTitleOrMessage))
   }
-  
+
   func test_actionsWithoutTitle() {
     let layouts = [
       "title->[c]",
@@ -49,42 +49,42 @@ class AlertLayoutTests: XCTestCase {
     ]
     try! layouts.forEach { layout in
       print("🎾 feed \(layout.debugDescription) ...")
-      XCTAssertThrowsError(try AlertLayout(layout: layout))
+      expect(_ = try AlertLayout(layout: layout)).to(throwError())
     }
   }
 
   func test_titleAndMessage() {
     let layout = "title:message"
-    let expect = AlertLayout(title: "title", message: "message", actions: [.fallback])
+    let expected = AlertLayout(title: "title", message: "message", actions: [.fallback])
     var result: AlertLayout?
-    XCTAssertNoThrow(result = try AlertLayout(layout: layout))
-    XCTAssert(result == expect)
+    expect { result = try AlertLayout(layout: layout) } .toNot(throwError())
+    expect(result) == expected
   }
 
   func test_titleMessageAndActions() {
     let layout = "title:message->act1|act2|act3"
-    let expect = AlertLayout(title: "title", message: "message", actions: [
+    let expected = AlertLayout(title: "title", message: "message", actions: [
       AlertLayoutAction(title: "act1"),
       AlertLayoutAction(title: "act2"),
       AlertLayoutAction(title: "act3"),
     ])
     var result: AlertLayout?
-    XCTAssertNoThrow(result = try AlertLayout(layout: layout))
-    XCTAssert(result == expect)
+    expect { result = try AlertLayout(layout: layout) } .toNot(throwError())
+    expect(result) == expected
   }
-  
+
   func test_multilineLayout() {
     let layout = """
       title:message
       ->act1|act2[c]|act3[d]
     """
-    let expect = AlertLayout(title: "title", message: "message", actions: [
+    let expected = AlertLayout(title: "title", message: "message", actions: [
       AlertLayoutAction(title: "act1"),
       AlertLayoutAction(title: "act2", style: .cancel),
       AlertLayoutAction(title: "act3", style: .destructive),
-      ])
+    ])
     var result: AlertLayout?
-    XCTAssertNoThrow(result = try AlertLayout(layout: layout))
-    XCTAssert(result == expect)
+    expect { result = try AlertLayout(layout: layout) } .toNot(throwError())
+    expect(result) == expected
   }
 }

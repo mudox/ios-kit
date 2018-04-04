@@ -8,7 +8,7 @@
 import UIKit
 
 public struct AlertLayoutAction: Equatable {
-  
+
   public static let fallback = AlertLayoutAction(title: "Dismiss")
 
   public let title: String
@@ -18,11 +18,11 @@ public struct AlertLayoutAction: Equatable {
     self.title = title
     self.style = style
   }
-  
-  public static func ==(lhs: AlertLayoutAction, rhs: AlertLayoutAction) -> Bool {
+
+  public static func == (lhs: AlertLayoutAction, rhs: AlertLayoutAction) -> Bool {
     return lhs.title == rhs.title && lhs.style == rhs.style
   }
-  
+
 }
 
 
@@ -40,7 +40,7 @@ extension AlertLayout {
     case invalidAction(String)
   }
 
-  init(layout: String) throws {
+  public init(layout: String) throws {
     if layout.hasPrefix("->") {
       throw Errors.needTitleOrMessage
     }
@@ -68,7 +68,7 @@ extension AlertLayout {
     if range.location == NSNotFound {
       title = nil
     } else {
-      title = (layout as NSString).substring(with: range)
+      title = (layout as NSString).substring(with: range).trimmed()
     }
 
     // message
@@ -77,7 +77,7 @@ extension AlertLayout {
     if range.location == NSNotFound {
       message = nil
     } else {
-      message = (layout as NSString).substring(with: range)
+      message = (layout as NSString).substring(with: range).trimmed()
     }
 
     // action title(s) and styles
@@ -91,7 +91,8 @@ extension AlertLayout {
       let group = (layout as NSString).substring(with: range)
       actions = try group
         .split(separator: "|")
-        .map { spec in
+        .map {
+          let spec = String($0).trimmed()
           if spec.hasSuffix("[c]") {
             let title = String(spec.dropLast(3))
             guard !title.isEmpty else {
@@ -120,10 +121,8 @@ extension AlertLayout {
     if actions.isEmpty {
       actions = [.fallback]
     }
-    
-    self.title = title
-    self.message = message
-    self.actions = actions
+
+    self.init(title: title, message: message, actions: actions)
   }
 }
 

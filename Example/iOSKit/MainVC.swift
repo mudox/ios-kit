@@ -54,7 +54,18 @@ class MainVC: FormViewController {
   }
  }
 
+ var hudSection: Section {
+  let section = Section("HUD views")
+  ["MBProgressHUD", "SVProgressHUD", "NVActivityIndicatorView"].forEach { text in
+   section <<< ButtonRow() { $0.title = text }
+    .cellUpdate(cellSetup)
+    .onCellSelection { [weak self] cell, row in
+     guard let ss = self else { return }
+     ss.performSegue(withIdentifier: "\(text!.prefix(3).lowercased())VC", sender: ss)
+   }
   }
+  return section
+ }
 
 }
 

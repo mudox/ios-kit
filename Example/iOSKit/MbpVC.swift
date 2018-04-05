@@ -67,16 +67,18 @@ class MbpVC: FormViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    tableView.tableHeaderView = headerView
+//    tableView.tableHeaderView = headerView
     form.inlineRowHideOptions = [.AnotherInlineRowIsShown, .FirstResponderChanges]
-    edgesForExtendedLayout = []
+//    edgesForExtendedLayout = []
     automaticallyAdjustsScrollViewInsets = false
+    tableView.contentInset = UIEdgeInsets(top: 180, left: 0, bottom: 0, right: 0)
 
     setupHeaderView()
     setupNavigationBar()
 
     form
       +++ inputSection
+      +++ geometrySection
       +++ runSection
 
 //    let commandsFromTitleSegment = titleSegment.rx.selectedSegmentIndex
@@ -125,11 +127,19 @@ class MbpVC: FormViewController {
   }
 
   func setupHeaderView() {
-    headerView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+    headerView = UIImageView()
     headerView.clipsToBounds = true
     headerView.image = #imageLiteral(resourceName: "Header")
     headerView.contentMode = .scaleAspectFill
-    tableView.tableHeaderView = headerView
+
+    view.addSubview(headerView)
+    headerView.translatesAutoresizingMaskIntoConstraints = false
+    headerView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+    headerView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+    headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+    headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+
+//    tableView.tableHeaderView = headerView
   }
 
   func setupNavigationBar() {
@@ -152,11 +162,11 @@ class MbpVC: FormViewController {
           "animation": MBProgressHUDAnimation.fade,
           "background": MBProgressHUDBackgroundStyle.blur,
           "square": false,
-          "margin": 20.0,
-          "simualteProgress": false,
+          "margin": 20 as Double,
+          "width": 120 as Float,
+          "hegiht": 90 as Float,
         ])
-        ss.form[0].reload()
-        ss.form[1].reload()
+        ss.tableView.reloadData()
       })
       .disposed(by: disposeBag)
   }
@@ -182,7 +192,7 @@ class MbpVC: FormViewController {
     }
 
     <<< PushRow<MBProgressHUDMode>("mode") {
-      $0.title = "HUD Layout Mode"
+      $0.title = "Mode"
       $0.options = [
           .text,
           .indeterminate,
@@ -211,26 +221,57 @@ class MbpVC: FormViewController {
       $0.title = "Background Style    "
       $0.options = [.blur, .solidColor]
       $0.value = .blur
+    }.cellSetup { cell, row in
+      cell.segmentedControl.apportionsSegmentWidthsByContent = true
     }.onChange { [weak self] _ in
       self?.updateDemoHUD()
     }
 
+
+
+    return section
+
+  }
+
+  var geometrySection: Section {
+
+    let section = Section("SIZE AND SHAP")
+
     <<< SwitchRow("square") {
-      $0.title = "Keep Square Shape"
+      $0.title = "Keep Square"
       $0.value = false
     }.onChange { [weak self] _ in
       self?.updateDemoHUD()
     }
 
     <<< StepperRow("margin") {
-      $0.title = "Bezel View Margin"
+      $0.title = "Margin"
       $0.value = 20 // default
     }.onChange { [weak self] _ in
       self?.updateDemoHUD()
     }
 
-    return section
+    <<< SliderRow("width") {
+      $0.title = "Min. Width"
+      $0.value = 110
+    }.cellSetup { cell, row in
+      cell.slider.minimumValue = 50
+      cell.slider.maximumValue = 400
+    }.onChange { [weak self] _ in
+      self?.updateDemoHUD()
+    }
 
+    <<< SliderRow("height") {
+      $0.title = "Min. Height"
+      $0.value = 90
+    }.cellSetup { cell, row in
+      cell.slider.minimumValue = 50
+      cell.slider.maximumValue = 400
+    }.onChange { [weak self] _ in
+      self?.updateDemoHUD()
+    }
+
+    return section
   }
 
   var runSection: Section {
@@ -286,14 +327,18 @@ class MbpVC: FormViewController {
     let animation = values["animation"] as! MBProgressHUDAnimation
     let background = values["background"] as! MBProgressHUDBackgroundStyle
     let isSquare = values["square"] as! Bool
-    let margin = CGFloat(values["margin"] as? Double ?? 20.0)
+    let margin = CGFloat(values["margin"] as! Double)
+    let width = CGFloat(values["width"] as! Float)
+    let height = CGFloat(values["height"] as! Float)
+    let minSize = CGSize(width: width, height: height)
 
     let command = MBPCommand.show(title: title, message: message, mode: mode) {
       hud in
       hud.animationType = animation
       hud.bezelView.style = background
-      hud.isSquare = isSquare
+      hud.isSquare = isSquare®
       hud.margin = margin
+      hud.minSize = minSize
     }
 
     return command
@@ -301,6 +346,12 @@ class MbpVC: FormViewController {
 
   func updateDemoHUD() {
     mbpCommands.onNext(makeUpdateCommand())
+  }
+
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//    var frame = headerView.frame
+//    frame.origin.y = scrollView.contentOffset.y
+//    headerView.frame = frame
   }
 
 }

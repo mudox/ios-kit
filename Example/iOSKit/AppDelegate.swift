@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     The.app.mdx.observeAppStates()
     The.app.mdx.dumpInfo()
+    
+    setupEurekaFormStyle()
+    
     return true
   }
 

@@ -67,10 +67,8 @@ class MbpVC: FormViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-//    tableView.tableHeaderView = headerView
     form.inlineRowHideOptions = [.AnotherInlineRowIsShown, .FirstResponderChanges]
-//    edgesForExtendedLayout = []
-    automaticallyAdjustsScrollViewInsets = false
+//    automaticallyAdjustsScrollViewInsets = false
     tableView.contentInset = UIEdgeInsets(top: 180, left: 0, bottom: 0, right: 0)
 
     setupHeaderView()
@@ -80,26 +78,6 @@ class MbpVC: FormViewController {
       +++ inputSection
       +++ geometrySection
       +++ runSection
-
-//    let commandsFromTitleSegment = titleSegment.rx.selectedSegmentIndex
-//      .asDriver()
-//      .map { [weak self] index -> MBPCommand in
-//        guard let ss = self else { return .hide }
-//        switch index {
-//        case 0:
-//          return .hideIn(1)
-//        case 1:
-//          return ss.makeUpdateCommand()
-//        case 2:
-//          return .hide
-//        default:
-//          return .failure(message: "Unexpected title segment index: \(index)")
-//        }
-//    }
-//
-//    commandsFromTitleSegment
-//      .drive(commandsSubject)
-//      .disposed(by: disposeBag)
 
     Driver<Int>.interval(0.1)
       .scan(0.0 as Double) { acc, _ -> Double in
@@ -144,9 +122,9 @@ class MbpVC: FormViewController {
 
   func setupNavigationBar() {
     // title segment
-    titleSegment = UISegmentedControl(items: ["Blink", "Show", "Hide"])
-    titleSegment.selectedSegmentIndex = 1
-    navigationItem.titleView = titleSegment
+//    titleSegment = UISegmentedControl(items: ["Blink", "Show", "Hide"])
+//    titleSegment.selectedSegmentIndex = 1
+//    navigationItem.titleView = titleSegment
 
     // reset button
     let item = UIBarButtonItem()
@@ -160,11 +138,10 @@ class MbpVC: FormViewController {
           "message": "Test MBProgressHUD",
           "mode": MBProgressHUDMode.text,
           "animation": MBProgressHUDAnimation.fade,
-          "background": MBProgressHUDBackgroundStyle.blur,
           "square": false,
           "margin": 20 as Double,
           "width": 120 as Float,
-          "hegiht": 90 as Float,
+          "height": 90 as Float,
         ])
         ss.tableView.reloadData()
       })
@@ -213,21 +190,13 @@ class MbpVC: FormViewController {
       $0.title = "Animation Type"
       $0.options = [.fade, .zoom, .zoomOut, .zoomIn]
       $0.value = .fade
-    }.onChange { [weak self] _ in
-      self?.updateDemoHUD()
+    }.onChange { [weak self] row in
+      guard let ss = self else { return }
+      ss.view.mbp.blink(title: "\(row.value!)", message: "Test Animation Type") {
+        hud in
+        hud.animationType = row.value!
+      }
     }
-
-    <<< SegmentedRow<MBProgressHUDBackgroundStyle>("background") {
-      $0.title = "Background Style    "
-      $0.options = [.blur, .solidColor]
-      $0.value = .blur
-    }.cellSetup { cell, row in
-      cell.segmentedControl.apportionsSegmentWidthsByContent = true
-    }.onChange { [weak self] _ in
-      self?.updateDemoHUD()
-    }
-
-
 
     return section
 
@@ -324,8 +293,6 @@ class MbpVC: FormViewController {
     let title = values["title"] as? String
     let message = values["message"] as? String
     let mode = values["mode"] as! MBProgressHUDMode
-    let animation = values["animation"] as! MBProgressHUDAnimation
-    let background = values["background"] as! MBProgressHUDBackgroundStyle
     let isSquare = values["square"] as! Bool
     let margin = CGFloat(values["margin"] as! Double)
     let width = CGFloat(values["width"] as! Float)
@@ -334,9 +301,7 @@ class MbpVC: FormViewController {
 
     let command = MBPCommand.show(title: title, message: message, mode: mode) {
       hud in
-      hud.animationType = animation
-      hud.bezelView.style = background
-      hud.isSquare = isSquare®
+      hud.isSquare = isSquare
       hud.margin = margin
       hud.minSize = minSize
     }

@@ -19,29 +19,6 @@ public typealias ChangeMBProgressHUD = (MBProgressHUD) -> ()
 
 extension MBPProxy where Base: UIView {
 
-  /// Returns the base view's HUD if there is one
-  public var view: MBProgressHUD {
-
-    if MBProgressHUD(for: base) == nil {
-      jack.warn("No HUD view exisits, add one.")
-      MBProgressHUD.showAdded(to: base, animated: true)
-    }
-
-    return MBProgressHUD(for: base)!
-  }
-
-  func checkIfNothingToShow() {
-    let hud = view
-
-    if hud.label.text.isNilOrEmpty
-      && hud.detailsLabel.text.isNilOrEmpty
-      && hud.mode == .text {
-
-      debugFailure("Nothing to show")
-      hud.detailsLabel.text = "- Null -"
-    }
-  }
-
   /// The base method of public methods __show(...)___ and __blink(...)___
   ///
   /// - Important: Paramter settings override closure settings.
@@ -65,48 +42,31 @@ extension MBPProxy where Base: UIView {
     hideIn interval: TimeInterval? = nil,
     extraChanges change: ChangeMBProgressHUD? = nil
   ) {
-    let hud = view
-
-    if hud.isHidden {
-      jack.warn("HUD is hidden, show it first")
-      hud.show(animated: true)
-    }
-
-    if let interval = interval {
-      if interval < 0.1 {
-        debugFailure("Immediately hide after show?")
-      }
-
-      hud.hide(animated: true, afterDelay: interval)
-    }
-
-    change?(hud)
+    // make sure HUD exisits & shown
+    let hud = MBProgressHUD(for: base)
+      ?? MBProgressHUD.showAdded(to: base, animated: true)
 
     hud.label.text = title
     hud.detailsLabel.text = message
 
-    if progress != nil {
-      // need to show progress, .text mode is not all allowed (it hides the progress indicator)
-      hud.progress = Float(progress!)
-      hud.mode = mode ?? .determinate
-      if hud.mode == .text {
-        debugFailure("Change mode from .text to .determinate, with process being \(progress!)")
-        hud.mode = .determinate
-      }
-    } else {
-      // progress is cleared, only allow mode to be .text or .customView
-      hud.mode = mode ?? .text
-      switch hud.mode {
-      case .determinate, .determinateHorizontalBar, .annularDeterminate, .indeterminate:
-        debugFailure("No need to show a progress indicator when progress is cleared")
-        hud.mode = .text
-      default:
-        break
-      }
+    if let progress = progress {
+      hud.progress = Float(progress)
     }
 
-    checkIfNothingToShow()
-  } // func _mbp_showOrBlink
+    if let mode = mode {
+      hud.mode = mode
+    }
+
+    if var interval = interval {
+      if interval < 0.5 {
+        debugFailure("hide too quickly, increase to 0.5s")
+        interval = 0.5
+      }
+      hud.hide(animated: true, afterDelay: interval)
+    }
+
+    change?(hud)
+  }
 
 
   /// Combination of __show(...)__ and __hide(...)__
@@ -139,16 +99,14 @@ extension MBPProxy where Base: UIView {
   ///
   /// - Parameter config: Configuration block.
   func apply(_ change: ChangeMBProgressHUD) {
-    let hud = view
-
-    if hud.isHidden {
-      jack.warn("HUD is hidden, show it first")
-      hud.show(animated: true)
+    if MBProgressHUD(for: base) == nil {
+      jack.warn("HUD view does not exists")
     }
+    
+    let hud = MBProgressHUD(for: base)
+      ?? MBProgressHUD.showAdded(to: base, animated: true)
 
     change(hud)
-
-    checkIfNothingToShow()
   }
 
 
@@ -156,10 +114,8 @@ extension MBPProxy where Base: UIView {
   ///
   /// - Parameter seconds: Delayed seconds, defautls to 0 (hide immediately)
   public func hide(in interval: TimeInterval = 0) {
-    let hud = view
-
-    guard !hud.isHidden else {
-      jack.warn("HUD view is already hidden")
+    guard let hud = MBProgressHUD(for: base) else {
+      jack.warn("HUD view does not exists")
       return
     }
 
@@ -172,7 +128,6 @@ extension MBPProxy where Base: UIView {
 
   public var hud: Binder<MBPCommand> {
     return Binder(base) { base, command in
-
       switch command {
 
       case let .internalShow(title, message, progress, mode, changes):

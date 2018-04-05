@@ -8,7 +8,7 @@
 import Foundation
 import MBProgressHUD
 
-private class Framework {} // for retrieving the framework bundle
+private class Framework { } // for retrieving the framework bundle
 
 var mbpBundle: Bundle = {
   let frameworkBundle = Bundle(for: Framework.self)
@@ -138,24 +138,17 @@ public enum MBPCommand {
       title: (title == nil && message == nil) ? "Succeeded" : title,
       message: message,
       progress: nil,
-      mode: .customView,
-      extraChanges: { hud in
+      mode: .customView)
+    { hud in
+      // custom view
+      let image = UIImage(named: "Check37", in: mbpBundle, compatibleWith: nil)
+      let imageView = UIImageView(image: image)
+      hud.customView = imageView
+      
+      hud.setForegroundColor(.white)
+      hud.setBackgroundColor(UIColor(red: 0.205, green: 0.450, blue: 0.142, alpha: 1))
 
-        let image = UIImage(named: "Check37", in: mbpBundle, compatibleWith: nil)
-        let view = UIImageView(image: image)
-        view.frame = CGRect(x: 0, y: 0, width: 37, height: 37)
-        view.contentMode = .scaleAspectFit
-        hud.customView = view
-        
-        hud.bezelView.style = .solidColor
-
-        hud.tintColor = .white
-        hud.bezelView.tintColor = .white
-        hud.bezelView.color = .green
-        
-        hud.label.textColor = .white
-        hud.detailsLabel.textColor = .white
-      })
+    }
   }
 
 
@@ -165,23 +158,15 @@ public enum MBPCommand {
       title: (title == nil && message == nil) ? "Failed" : title,
       message: message,
       progress: nil,
-      mode: .customView,
-      extraChanges: { hud in
-        
-        let image = UIImage(named: "Cross37", in: mbpBundle, compatibleWith: nil)
-        let view = UIImageView(image: image)
-        view.frame = CGRect(x: 0, y: 0, width: 37, height: 37)
-        view.contentMode = .scaleAspectFit
-        hud.customView = view
-
-        hud.bezelView.style = .solidColor
-        
-        hud.tintColor = .white
-        hud.bezelView.tintColor = .white
-        hud.bezelView.color = .green
-        
-        hud.label.textColor = .white
-        hud.detailsLabel.textColor = .white
-      })
+      mode: .customView)
+    { hud in
+      // custom view
+      let image = UIImage(named: "Cross37", in: mbpBundle, compatibleWith: nil)
+      let imageView = UIImageView(image: image)
+      hud.customView = imageView
+      
+      hud.setForegroundColor(.white)
+      hud.setBackgroundColor(UIColor(red: 0.800, green: 0.078, blue: 0.034, alpha: 1))
+    }
   }
 }

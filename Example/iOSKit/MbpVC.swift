@@ -99,34 +99,29 @@ class MbpVC: FormViewController {
 //      .drive(commandsSubject)
 //      .disposed(by: disposeBag)
 
-//    Driver<Int>.interval(0.08)
-//      .scan(0.0 as Double) { acc, _ -> Double in
-//        var result: Double
-//        result = acc + (1.0 / 8)
-//        if result > 1.0 {
-//          result = 0.0
-//        }
-//        return result
-//      }
-//      .withLatestFrom(simualteProgressSubject.asDriver(onErrorJustReturn: false)) {
-//        progress, enabled -> MBPCommand in
-//        if enabled {
-//          return .update(progress: progress)
-//        } else {
-//          return .apply { _ in }
-//        }
-//      }
-//      .drive(commandsSubject)
-//      .disposed(by: disposeBag)
+    Driver<Int>.interval(0.1)
+      .scan(0.0 as Double) { acc, _ -> Double in
+        var result: Double
+        result = acc + (1.0 / 30)
+        if result > 1.0 {
+          result = 0.0
+        }
+        return result
+      }
+      .drive(
+        onNext: { [weak self] progress in
+          guard let ss = self else { return }
+          MBProgressHUD(for: ss.headerView)?.progress = Float(progress)
+        }
+      )
+      .disposed(by: disposeBag)
 
     mbpCommands
       .asDriver(onErrorJustReturn: .failure(title: nil, message: "Somthing happend ..."))
       .drive(self.headerView.mbp.hud)
       .disposed(by: disposeBag)
 
-
-    let showHUD = MBPCommand.show(title: "iOSKit", message: "Test MBProgresssHUD (initial)", progress: nil, mode: .text)
-    mbpCommands.onNext(showHUD)
+    mbpCommands.onNext(makeUpdateCommand())
   }
 
   func setupHeaderView() {
@@ -242,27 +237,40 @@ class MbpVC: FormViewController {
 
     let section = Section("Run")
 
-    <<< SwitchRow("simualteProgress") {
-      $0.title = "Simulate Progress"
-      $0.value = false
-    }.onChange { [weak self] row in
-      guard let ss = self else { return }
-      ss.simualteProgressSubject.onNext(row.value ?? false)
-    }
     <<< ButtonRow() {
       $0.title = "Simulate a Downloading Process"
     }.onCellSelection { [weak self] cell, row in
       guard let ss = self else { return }
-      let view = MBProgressHUD.showAdded(to: ss.view, animated: true)
-      view.mode = .text
-      view.label.text = "Mudox"
-      view.bezelView.style = .solidColor
+      let commands = Observable<MBPCommand>
+        .create { observer in
+          observer.onNext(.show(title: "Downloading ...") { hud in
+            hud.progress = 0
+            hud.mode = .annularDeterminate
+            hud.minSize = CGSize(width: 160, height: 100)
+          })
 
-      view.bezelView.tintColor = .white
-      view.bezelView.color = .green
+          var progress = 0.0
+          while progress < 1.0 {
+            Thread.sleep(forTimeInterval: 0.05)
+            observer.onNext(.update(progress: progress))
+            progress += 0.02
+          }
+          if arc4random_uniform(2) == 0 {
+            observer.onNext(.failure())
+          } else {
+            observer.onNext(.success())
+          }
+          Thread.sleep(forTimeInterval: 2)
+          observer.onCompleted()
 
-      view.label.textColor = .white
-      view.detailsLabel.textColor = .white
+          return Disposables.create()
+        }
+        .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+
+      commands
+        .asDriver(onErrorJustReturn: .hide)
+        .drive(ss.view.mbp.hud)
+        .disposed(by: ss.disposeBag)
     }
 
     return section

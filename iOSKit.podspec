@@ -37,14 +37,21 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'MBP' do |ss|
-    ss.source_files = 'iOSKit/MBProgressHUD/MPB.swift'
+    ss.source_files = 'iOSKit/MBP/**/*.swift'
     ss.dependency 'MBProgressHUD', '~> 1.0'
+    ss.resource_bundle = { 'Assets' => 'iOSKit/MBP/MBP.xcassets' }
   end
 
   s.subspec 'SVP' do |ss|
-  ss.source_files = 'iOSKit/SVProgressHUD/**/*'
+  ss.source_files = 'iOSKit/SVP/**/*'
   ss.dependency 'SVProgressHUD'
   end
+
+  s.subspec 'NVA' do |ss|
+    ss.source_files = 'iOSKit/NVA/**/*'
+    ss.dependency 'MBProgressHUD', '~> 1.0'
+  end
+
 
   s.subspec 'OC' do |ss|
   ss.source_files = 'iOSKit/OC/**/*'

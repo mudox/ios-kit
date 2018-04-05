@@ -13,7 +13,7 @@ target 'iOSKit_Example' do
 
   target 'iOSKit_ExampleTests' do
     inherit! :search_paths
-
-
+    pod 'Quick'
+    pod 'Nimble'
   end
 end

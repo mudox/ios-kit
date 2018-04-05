@@ -35,19 +35,31 @@
     },
     {
       "name": "MBP",
-      "source_files": "iOSKit/MBProgressHUD/MPB.swift",
+      "source_files": "iOSKit/MBP/**/*.swift",
       "dependencies": {
         "MBProgressHUD": [
           "~> 1.0"
         ]
+      },
+      "resource_bundles": {
+        "Assets": "iOSKit/MBP/MBP.xcassets"
       }
     },
     {
       "name": "SVP",
-      "source_files": "iOSKit/SVProgressHUD/**/*",
+      "source_files": "iOSKit/SVP/**/*",
       "dependencies": {
         "SVProgressHUD": [
 
+        ]
+      }
+    },
+    {
+      "name": "NVA",
+      "source_files": "iOSKit/NVA/**/*",
+      "dependencies": {
+        "MBProgressHUD": [
+          "~> 1.0"
         ]
       }
     },

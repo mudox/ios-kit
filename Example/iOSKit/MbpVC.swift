@@ -11,48 +11,6 @@ import iOSKit
 import JacKit
 fileprivate let jack = Jack.with(levelOfThisFile: .debug)
 
-extension MBProgressHUDMode: CustomStringConvertible {
-  public var description: String {
-    switch self {
-    case .text: return "text"
-    case .indeterminate: return "indeterminate"
-    case .determinate: return "determinate"
-    case .annularDeterminate: return "annularDeterminate"
-    case .determinateHorizontalBar: return "determinateHorizontalBar"
-    case .customView: return "customView"
-    }
-  }
-
-  public var section: String {
-    switch self {
-    case .text: return "text"
-    case .indeterminate: return "indeterminate"
-    case .determinate, .determinateHorizontalBar, .annularDeterminate: return "determinate"
-    case .customView: return "customView"
-    }
-  }
-}
-
-extension MBProgressHUDBackgroundStyle: CustomStringConvertible {
-  public var description: String {
-    switch self {
-    case .blur: return "blur"
-    case .solidColor: return "solidColor"
-    }
-  }
-}
-
-extension MBProgressHUDAnimation: CustomStringConvertible {
-  public var description: String {
-    switch self {
-    case .fade: return "fade"
-    case .zoom: return "zoom"
-    case .zoomOut: return "zoomOut"
-    case .zoomIn: return "zoomIn"
-    }
-  }
-}
-
 class MbpVC: FormViewController {
 
   var disposeBag = DisposeBag()
@@ -68,7 +26,6 @@ class MbpVC: FormViewController {
     super.viewDidLoad()
 
     form.inlineRowHideOptions = [.AnotherInlineRowIsShown, .FirstResponderChanges]
-//    automaticallyAdjustsScrollViewInsets = false
     tableView.contentInset = UIEdgeInsets(top: 180, left: 0, bottom: 0, right: 0)
 
     setupHeaderView()
@@ -116,15 +73,12 @@ class MbpVC: FormViewController {
     headerView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
     headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-
-//    tableView.tableHeaderView = headerView
   }
 
   func setupNavigationBar() {
-    // title segment
-//    titleSegment = UISegmentedControl(items: ["Blink", "Show", "Hide"])
-//    titleSegment.selectedSegmentIndex = 1
-//    navigationItem.titleView = titleSegment
+    with(navigationItem) { item in
+      item.title = "MBP"
+    }
 
     // reset button
     let item = UIBarButtonItem()
@@ -177,19 +131,28 @@ class MbpVC: FormViewController {
       ]
       $0.value = .text
       $0.selectorTitle = "HUD modes"
+      $0.displayValueFor = { $0?.caseName ?? "nil" }
     }.onChange { [weak self] _ in
       self?.updateDemoHUD()
     }.onPresent { from, to in
       to.dismissOnSelection = false
       to.dismissOnChange = false
       to.enableDeselection = false
-      to.sectionKeyForValue = { option in return option.section }
+      to.sectionKeyForValue = {
+        switch $0 {
+        case .text: return "no progress indicator"
+        case .indeterminate: return "a UIActivityIndicatorView spinning"
+        case .determinate, .determinateHorizontalBar, .annularDeterminate: return "progress ring or bar"
+        case .customView: return "use custom view as indicator"
+        }
+      }
     }
 
     <<< PickerInlineRow<MBProgressHUDAnimation>("animation") {
       $0.title = "Animation Type"
       $0.options = [.fade, .zoom, .zoomOut, .zoomIn]
       $0.value = .fade
+      $0.displayValueFor = { $0?.caseName ?? "nil" }
     }.onChange { [weak self] row in
       guard let ss = self else { return }
       ss.view.mbp.blink(title: "\(row.value!)", message: "Test Animation Type") {
@@ -311,12 +274,6 @@ class MbpVC: FormViewController {
 
   func updateDemoHUD() {
     mbpCommands.onNext(makeUpdateCommand())
-  }
-
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//    var frame = headerView.frame
-//    frame.origin.y = scrollView.contentOffset.y
-//    headerView.frame = frame
   }
 
 }

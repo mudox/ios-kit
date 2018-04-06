@@ -519,6 +519,7 @@
 		F28003B228B82B7E1497D4F41F55A31E /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3574AA4D02DAC4B5B39A3CC69263291D /* Match.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		F31FA71CC9D318BB47DA0C82154C820B /* Repeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = C27E1FDDA267BA05176831E443F24CEB /* Repeat.swift */; };
 		F3BAA36614ABDBC0538B0DEA99CF80A0 /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8D2B9F52A89FCF71FF31FF3CC845F5 /* SourceLocation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
+		F43BE79E2077E44B00139AEB /* HasEnumNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43BE79D2077E44B00139AEB /* HasEnumNames.swift */; };
 		F4623EF7D8FDFD7EBFFB49C8078AB24B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88AE290030619F2F5B87E9C945683362 /* Foundation.framework */; };
 		F4BD249C60F21F5E0F7C1FAC8A5BC2AF /* BeIdenticalTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F22EC7A8BA7DA6911E5765B2C4E722C /* BeIdenticalTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		F4F5321C3F1B0622D00E5B1AE7E00C51 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 676873E50B3203588B12713B73DD934E /* Sequence.swift */; };
@@ -1241,6 +1242,7 @@
 		F23337F11D49E83D00A79CBD8A70C821 /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B7C9FFA9D21254EFEE49ABBFF540B6 /* Completable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Completable.swift; path = RxSwift/Traits/Completable.swift; sourceTree = "<group>"; };
 		F33F32C97B358DB89E55C06594850001 /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		F43BE79D2077E44B00139AEB /* HasEnumNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HasEnumNames.swift; path = iOSKit/Core/HasEnumNames.swift; sourceTree = "<group>"; };
 		F4D0B6A09D69EEC6C7FDBC40D485A1E9 /* HistoricalScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HistoricalScheduler.swift; path = RxSwift/Schedulers/HistoricalScheduler.swift; sourceTree = "<group>"; };
 		F55606EC57679107ED81B964A893C033 /* Pods-iOSKit_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-iOSKit_Example-umbrella.h"; sourceTree = "<group>"; };
 		F55FE292F4CC5899DA5BAEDF16FCEA3B /* Materialize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Materialize.swift; path = RxSwift/Observables/Materialize.swift; sourceTree = "<group>"; };
@@ -1895,6 +1897,7 @@
 			children = (
 				1C2A31792DC0249719B63CAEADA262C3 /* CoreGraphics.swift */,
 				A953D0F171C1C1EE6EF028AEF9095BB7 /* Errors.swift */,
+				F43BE79D2077E44B00139AEB /* HasEnumNames.swift */,
 				D131FDF56F80F4B5195036F250B3F6E0 /* Inbox.swift */,
 				88160BEBFCD6D9338B8B583CA8D4BEF2 /* Int+TimeInterval.swift */,
 				10928CF0411EDA3DB4B70A9457D7F38C /* Mudoxive.swift */,
@@ -3091,6 +3094,7 @@
 				98E509C559E4064FF01609CBC89850E8 /* MBPProxy.swift in Sources */,
 				5D3C4BEF189F7FB3B858CFE36C706211 /* MBProgressHUDExtensions.swift in Sources */,
 				B1F101BD6351EDEA93C669429DE9EE49 /* Mudoxive.swift in Sources */,
+				F43BE79E2077E44B00139AEB /* HasEnumNames.swift in Sources */,
 				798288E4022C6830691B176A159F47CF /* String.swift in Sources */,
 				5230AE2403FF288B6455187194639A6C /* The.swift in Sources */,
 				CA70DB5BFC77A953B0DEFA7600669956 /* UIAlertController+mdx.swift in Sources */,

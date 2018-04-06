@@ -2,7 +2,7 @@ import UIKit
 import Eureka
 import iOSKit
 
-private func == (lhs: InteractivePopNavigationController.InteractivePopStyle, rhs: String) -> Bool {
+private func == (lhs: MDXNavigationController.InteractivePopStyle, rhs: String) -> Bool {
   return (lhs == .none && rhs == "none")
     || (lhs == .inherit && rhs == "inherit")
     || (lhs == .edge && rhs == "edge")
@@ -10,13 +10,13 @@ private func == (lhs: InteractivePopNavigationController.InteractivePopStyle, rh
 }
 
 class InteractivePopVC: FormViewController {
-  var popStyle: InteractivePopNavigationController.InteractivePopStyle {
+  var popStyle: MDXNavigationController.InteractivePopStyle {
     get {
-      let vc = The.mainWindow.rootViewController as! InteractivePopNavigationController
+      let vc = The.mainWindow.rootViewController as! MDXNavigationController
       return vc.interactivePopStyle
     }
     set {
-      let vc = The.mainWindow.rootViewController as! InteractivePopNavigationController
+      let vc = The.mainWindow.rootViewController as! MDXNavigationController
       vc.interactivePopStyle = newValue
     }
   }
@@ -28,7 +28,6 @@ class InteractivePopVC: FormViewController {
     for style in ["none", "inherit", "edge", "anywhere"] {
       let row = ButtonRow() { $0.title = style }
         .cellSetup { cell, row in
-//          cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
           cell.selectionStyle = .default
           cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }.cellUpdate { [weak self] cell, row in

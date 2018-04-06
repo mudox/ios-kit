@@ -10,16 +10,28 @@ import UIKit
 import JacKit
 fileprivate let jack = Jack.with(levelOfThisFile: .debug)
 
-public class InteractivePopNavigationController: UINavigationController {
+public class MDXNavigationController: UINavigationController {
 
-  public enum InteractivePopStyle {
+  public enum InteractivePopStyle: CustomStringConvertible {
+    
     case none
     case inherit
     case edge
     case anywhere
+
+    public var description: String {
+      switch self {
+      case .none: return "MDXNavigationController.InteractivePopStyle.none"
+      case .inherit: return "MDXNavigationController.InteractivePopStyle.inherit"
+      case .edge: return "MDXNavigationController.InteractivePopStyle.edge"
+      case .anywhere: return "MDXNavigationController.InteractivePopStyle.anywhere"
+      }
+    }
+    
   }
 
   public override func viewDidLoad() {
+    
     super.viewDidLoad()
 
     if _popTransitionController == nil {
@@ -35,6 +47,7 @@ public class InteractivePopNavigationController: UINavigationController {
       _panAnywhereToPop?.isEnabled = false
       view.addGestureRecognizer(_panAnywhereToPop!)
     }
+    
   }
 
   private var _panAnywhereToPop: UIPanGestureRecognizer!
@@ -71,7 +84,7 @@ public class InteractivePopNavigationController: UINavigationController {
 
 }
 
-extension InteractivePopNavigationController: UIGestureRecognizerDelegate {
+extension MDXNavigationController: UIGestureRecognizerDelegate {
   public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     let moreThanOneContentViewControllers = viewControllers.count > 1
 

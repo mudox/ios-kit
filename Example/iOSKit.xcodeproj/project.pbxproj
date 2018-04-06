@@ -18,7 +18,7 @@
 		F4835DD6207277A90038532D /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4835DD5207277A90038532D /* AlertVC.swift */; };
 		F4A558B32076B7D5005C5993 /* EurekaFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A558B22076B7D5005C5993 /* EurekaFormStyle.swift */; };
 		F4AF82FF207104D7000D4802 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF82FE207104D7000D4802 /* MainVC.swift */; };
-		F4AF830420711B93000D4802 /* InteractivePopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF830320711B93000D4802 /* InteractivePopVC.swift */; };
+		F4AF830420711B93000D4802 /* NavPopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF830320711B93000D4802 /* NavPopVC.swift */; };
 		F4E2F42120755ECD00603830 /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E2F42020755ECD00603830 /* StringTests.swift */; };
 		F4E2F423207561A200603830 /* IntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E2F422207561A100603830 /* IntTests.swift */; };
 		F4FFEA562072FE3D0095A437 /* MbpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FFEA552072FE3D0095A437 /* MbpVC.swift */; };
@@ -55,7 +55,7 @@
 		F4835DD5207277A90038532D /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
 		F4A558B22076B7D5005C5993 /* EurekaFormStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaFormStyle.swift; sourceTree = "<group>"; };
 		F4AF82FE207104D7000D4802 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
-		F4AF830320711B93000D4802 /* InteractivePopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractivePopVC.swift; sourceTree = "<group>"; };
+		F4AF830320711B93000D4802 /* NavPopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPopVC.swift; sourceTree = "<group>"; };
 		F4BA20F220701CBC00A1BEC2 /* MiscTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscTests.swift; sourceTree = "<group>"; };
 		F4E2F42020755ECD00603830 /* StringTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTests.swift; sourceTree = "<group>"; };
 		F4E2F422207561A100603830 /* IntTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntTests.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 				F4FFEA572072FEB90095A437 /* NvaVC.swift */,
 				F4FFEA582072FEB90095A437 /* SvpVC.swift */,
 				F4835DD5207277A90038532D /* AlertVC.swift */,
-				F4AF830320711B93000D4802 /* InteractivePopVC.swift */,
+				F4AF830320711B93000D4802 /* NavPopVC.swift */,
 				F4AF82FE207104D7000D4802 /* MainVC.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -410,7 +410,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4AF830420711B93000D4802 /* InteractivePopVC.swift in Sources */,
+				F4AF830420711B93000D4802 /* NavPopVC.swift in Sources */,
 				F4835DD6207277A90038532D /* AlertVC.swift in Sources */,
 				F4A558B32076B7D5005C5993 /* EurekaFormStyle.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

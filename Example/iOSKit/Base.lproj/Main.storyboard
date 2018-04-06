@@ -13,7 +13,7 @@
         <!--Root Navigation-->
         <scene sceneID="5al-CZ-MUl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1oa-wF-Fjf" userLabel="Root Navigation" customClass="InteractivePopNavigationController" customModule="iOSKit" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1oa-wF-Fjf" userLabel="Root Navigation" customClass="MDXNavigationController" customModule="iOSKit" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qgP-cj-kem">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -45,92 +45,12 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="yVe-uf-UEh"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="JXO-gT-abd" kind="show" identifier="interactivePopVC" id="Zvz-zo-dMt"/>
-                        <segue destination="nBD-mi-BcN" kind="show" identifier="alertVC" id="uWN-9c-RNE"/>
-                        <segue destination="oyO-ZF-kL6" kind="show" identifier="mbpVC" id="0oh-Xf-b7E"/>
-                        <segue destination="Jy8-Lr-DJ1" kind="show" identifier="svpVC" id="d0K-1a-WVj"/>
-                        <segue destination="9Lz-Xm-MhD" kind="show" identifier="nvaVC" id="Kj3-A1-4GJ"/>
+                        <segue destination="nBD-mi-BcN" kind="show" identifier="AlertVC" id="uWN-9c-RNE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Gx-yM-rxx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="772" y="-219"/>
-        </scene>
-        <!--MBP-->
-        <scene sceneID="mLv-jO-w7m">
-            <objects>
-                <viewController id="oyO-ZF-kL6" customClass="MbpVC" customModule="iOSKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="GSA-oA-UrD"/>
-                        <viewControllerLayoutGuide type="bottom" id="azV-Vq-yzy"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="r8c-m0-As4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="MBP" id="dzg-sj-nmR"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gtj-d2-Dyc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1124" y="604"/>
-        </scene>
-        <!--SVP-->
-        <scene sceneID="H98-X8-j8a">
-            <objects>
-                <viewController id="Jy8-Lr-DJ1" customClass="SvpVC" customModule="iOSKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="CyL-21-d1U"/>
-                        <viewControllerLayoutGuide type="bottom" id="omc-DA-e0g"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qUj-J8-1Bm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="SVP" id="ugT-Q2-f1k"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Z5-Lc-fBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1918" y="604"/>
-        </scene>
-        <!--NVA-->
-        <scene sceneID="lh8-x9-Xk1">
-            <objects>
-                <viewController id="9Lz-Xm-MhD" customClass="NvaVC" customModule="iOSKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0gX-55-bfX"/>
-                        <viewControllerLayoutGuide type="bottom" id="iy8-yo-mgK"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ffh-lO-bph">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="NVA" id="yrT-VO-YHl"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QKG-7U-cfh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2695" y="604"/>
-        </scene>
-        <!--Interactive Pop-->
-        <scene sceneID="JOn-zb-cCv">
-            <objects>
-                <viewController id="JXO-gT-abd" customClass="InteractivePopVC" customModule="iOSKit_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="iUx-ew-Ayd"/>
-                        <viewControllerLayoutGuide type="bottom" id="fIl-gH-8T1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jNh-52-niy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Interactive Pop" id="MEj-5b-u4M"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zzj-6F-NGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="340" y="604"/>
         </scene>
         <!--Alert-->
         <scene sceneID="FZy-Da-8sQ">
@@ -280,7 +200,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qg-L9-b5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-470" y="604"/>
+            <point key="canvasLocation" x="1641" y="-219"/>
         </scene>
     </scenes>
 </document>

@@ -15,57 +15,23 @@ import JacKit
 fileprivate let jack = Jack.with(levelOfThisFile: .debug)
 
 class MainVC: FormViewController {
- var disposeBag = DisposeBag()
+  var disposeBag = DisposeBag()
 
- override func viewDidLoad() {
-  super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-  tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    tableView.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
-  form
-   +++ alertSection
-   +++ navSection
-   +++ hudSection
- }
-
- var cellSetup = { (cell: ButtonCell, row: ButtonRow) -> Void in
-//    cell.height = { 32 }
-//    cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
- }
-
- // MARK: sections
- var alertSection: Section {
-  return Section()
-  <<< ButtonRow() { $0.title = "Alert & Action Sheet" }
-   .cellSetup(cellSetup)
-   .onCellSelection { [weak self] cell, row in
-    guard let ss = self else { return }
-    ss.performSegue(withIdentifier: "alertVC", sender: ss)
+    form +++ Section("View Controllers")
+    <<< ButtonRow() {
+      $0.title = "Alert & Action Sheet Layout API"
+      $0.presentationMode = .segueName(segueName: "AlertVC", onDismiss: nil)
+    }
+    <<< ButtonRow() {
+      $0.title = "Interactive Navigation Conroller Pop"
+      $0.presentationMode = .show(controllerProvider: .callback(builder: NavPopVC.init), onDismiss: nil)
+    }
   }
- }
-
- var navSection: Section {
-  return Section()
-  <<< ButtonRow() { $0.title = "Interactive Pop Gesture" }
-   .cellUpdate(cellSetup)
-   .onCellSelection { [weak self] cell, row in
-    guard let ss = self else { return }
-    ss.performSegue(withIdentifier: "interactivePopVC", sender: ss)
-  }
- }
-
- var hudSection: Section {
-  let section = Section("HUD views")
-  ["MBProgressHUD", "SVProgressHUD", "NVActivityIndicatorView"].forEach { text in
-   section <<< ButtonRow() { $0.title = text }
-    .cellUpdate(cellSetup)
-    .onCellSelection { [weak self] cell, row in
-     guard let ss = self else { return }
-     ss.performSegue(withIdentifier: "\(text!.prefix(3).lowercased())VC", sender: ss)
-   }
-  }
-  return section
- }
 
 }
 

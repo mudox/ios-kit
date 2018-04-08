@@ -29,11 +29,3 @@ public enum TheError: Error {
     }
   }
 }
-
-public func debugFailure(_ message: String) {
-  #if DEBUG
-    fatalError(message)
-  #else
-    jack.warn(message)
-  #endif
-}

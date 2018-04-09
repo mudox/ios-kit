@@ -9,7 +9,7 @@
 import Foundation
 
 import JacKit
-fileprivate let jack = Jack.with(levelOfThisFile: .debug)
+fileprivate let jack = Jack.with(levelOfThisFile: .verbose)
 
 
 public enum TheError: Error {

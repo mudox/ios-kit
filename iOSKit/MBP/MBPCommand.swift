@@ -8,165 +8,135 @@
 import Foundation
 import MBProgressHUD
 
-private class Framework { } // for retrieving the framework bundle
+import JacKit
+fileprivate let jack = Jack.with(fileLocalLevel: .verbose)
 
-var mbpBundle: Bundle = {
-  let frameworkBundle = Bundle(for: Framework.self)
-  let assetsBundleURL = frameworkBundle.url(forResource: "Assets", withExtension: "bundle")!
-  return Bundle(url: assetsBundleURL)!
-}()
+/// Change MBProgressHUD view
+public typealias ChangeMBP = (MBProgressHUD) -> ()
 
-public enum MBPCommand {
+/// Change MBProgressHUD view for the parameter view
+public typealias ChangeMBPofView = (UIView) -> ()
 
-  case apply(ChangeMBProgressHUD)
-  case hide
-  case hideIn(TimeInterval)
+public struct MBPCommand {
 
-  // private cases
+  let change: ChangeMBPofView
 
-  case internalShow(
-    title: String?,
-    message: String?,
-    progress: Double?,
-    mode: MBProgressHUDMode?,
-    extraChanges: ChangeMBProgressHUD?
-  )
-  case internalBlink(
-    for: TimeInterval,
-    title: String?,
-    message: String?,
-    progress: Double?,
-    mode: MBProgressHUDMode?,
-    extraChanges: ChangeMBProgressHUD?
-  )
-
-
-  /// Configure and show HUD view.
-  ///
-  /// - Note: Use static func here instead of enum case to provide flexible
-  ///   interface / (allow omitting arguments when call)
-  ///
-  /// - Important: Paramter settings override closure settings.
-  ///
-  /// - Parameters:
-  ///   - title: Title string.
-  ///   - message: Message string.
-  ///   - progress: Progress number (0.0 ~ 1.0). If given a non-nil value and
-  ///     the mode is __.text__, change the mode
-  ///     to __.determinate__ automatically to a pie indicator.
-  ///   - mode: HUD layout mode.
-  ///   - extraChanges: Additional configuration goes here.
-  /// - Returns: MBPCommand.
-  public static func show(
-    title: String? = nil,
-    message: String? = nil,
-    progress: Double? = nil,
-    mode: MBProgressHUDMode? = nil,
-    extraChanges: ChangeMBProgressHUD? = nil
-  ) -> MBPCommand {
-    return .internalShow(
-      title: title,
-      message: message,
-      progress: progress,
-      mode: mode,
-      extraChanges: extraChanges
-    )
+  func execute(_ view: UIView) {
+    change(view)
   }
 
-
-  /// Configure and show HUD view for a interval (defaults to 1s) then hide.
-  ///
-  /// - Note: Use static func here instead of enum case to provide flexible
-  ///   interface / (allow omitting arguments when call)
-  ///
-  /// - Important: Paramter settings override closure settings.
-  ///
-  /// - Parameters:
-  ///   - title: Title string.
-  ///   - message: Message string.
-  ///   - progress: Progress number (0.0 ~ 1.0). If given a non-nil value and
-  ///     the mode is __.text__, change the mode
-  ///     to __.determinate__ automatically to a pie indicator.
-  ///   - mode: HUD layout mode.
-  ///   - interval: Interval to hide the HUD after shown (defaults to 1s).
-  ///   - extraChanges: Additional configuration goes here.
-  /// - Returns: MBPCommand.
-  public static func blink(
-    for interval: TimeInterval = 1,
-    title: String? = nil,
-    message: String? = nil,
-    progress: Double? = nil,
-    mode: MBProgressHUDMode? = nil,
-    extraChanges: ChangeMBProgressHUD? = nil
-  ) -> MBPCommand {
-    return .internalBlink(
-      for: interval,
-      title: title,
-      message: message,
-      progress: progress,
-      mode: mode,
-      extraChanges: extraChanges
-    )
+  private init(change: @escaping ChangeMBPofView) {
+    self.change = change
   }
 
+  public static func start(title: String? = nil, message: String? = nil, mode: MBProgressHUDMode = .indeterminate, extra change: ChangeMBP? = nil) -> MBPCommand {
+    return MBPCommand.init { view in
+      // make sure hud is shown
+      let hud = MBProgressHUD(for: view) ?? MBProgressHUD.showAdded(to: view, animated: true)
 
-  public static func update(title: String? = nil, message: String? = nil, progress: Double? = nil) -> MBPCommand {
-    return .apply { hud in
+      // texts
+      hud.label.text = title
+      hud.detailsLabel.text = message
 
-      if let title = title {
-        hud.label.text = title
-      }
+      // progress and mode
+      hud.progress = 0
+      hud.mode = mode
 
-      if let message = message {
-        hud.detailsLabel.text = message
-      }
+      // apply extra change if any
+      change?(hud)
+    }
+  }
 
+  public static func update(progress: Double, extra change: ChangeMBP? = nil) -> MBPCommand {
+    return MBPCommand.init { view in
+      // make sure hud is shown
+      let hud = MBProgressHUD(for: view) ?? MBProgressHUD.showAdded(to: view, animated: true)
+      hud.progress = Float(progress)
+
+      // apply extra change if any
+      change?(hud)
+    }
+  }
+
+  public static func nextStep(title: String? = nil, message: String? = nil, progress: Double? = nil, mode: MBProgressHUDMode = .indeterminate, extra change: ChangeMBP? = nil) -> MBPCommand {
+    return MBPCommand.init { view in
+      // make sure hud is shown
+      let hud = MBProgressHUD(for: view) ?? MBProgressHUD.showAdded(to: view, animated: true)
+
+      // texts
+      hud.label.text = title
+      hud.detailsLabel.text = message
+
+      // progress and mode
       if let progress = progress {
         hud.progress = Float(progress)
-        if hud.mode == .text {
-          hud.mode = .determinate
-        }
       }
+      hud.mode = mode
 
+      // apply extra change if any
+      change?(hud)
     }
   }
 
+  public static func success(title: String? = nil, message: String? = nil, hideIn interval: TimeInterval = 1, extra change: ChangeMBP? = nil) -> MBPCommand {
+    return MBPCommand.init { view in
+      // make sure hud is shown
+      let hud = MBProgressHUD(for: view) ?? MBProgressHUD.showAdded(to: view, animated: true)
 
-  public static func success(title: String? = nil, message: String? = nil) -> MBPCommand {
-    return .blink(
-      for: 1,
-      title: (title == nil && message == nil) ? "Succeeded" : title,
-      message: message,
-      progress: nil,
-      mode: .customView)
-    { hud in
-      // custom view
-      let image = UIImage(named: "Check37", in: mbpBundle, compatibleWith: nil)
+      // progress and mode
+      hud.progress = 0
+      hud.mode = .customView
+
+      // custom view to show success mark
+      let image = UIImage.checkMark
       let imageView = UIImageView(image: image)
       hud.customView = imageView
-      
-      hud.setForegroundColor(.white)
-      hud.setBackgroundColor(UIColor(red: 0.205, green: 0.450, blue: 0.142, alpha: 1))
 
+      // text
+      hud.label.text = title
+      hud.detailsLabel.text = message
+
+      // color
+      hud.setForegroundColor(.white)
+      hud.setBackgroundColor(UIColor.success)
+      
+      
+      // apply extra change if any
+      change?(hud)
+
+      // hide
+      hud.hide(animated: true, afterDelay: interval)
     }
   }
 
+  public static func failure(title: String? = nil, message: String? = nil, hideIn interval: TimeInterval = 1, extra change: ChangeMBP? = nil) -> MBPCommand {
+    return MBPCommand.init { view in
+      // make sure hud is shown
+      let hud = MBProgressHUD(for: view) ?? MBProgressHUD.showAdded(to: view, animated: true)
 
-  public static func failure(title: String? = nil, message: String? = nil) -> MBPCommand {
-    return .blink(
-      for: 1,
-      title: (title == nil && message == nil) ? "Failed" : title,
-      message: message,
-      progress: nil,
-      mode: .customView)
-    { hud in
-      // custom view
-      let image = UIImage(named: "Cross37", in: mbpBundle, compatibleWith: nil)
+      // progress and mode
+      hud.progress = 0
+      hud.mode = .customView
+
+      // custom view to show success mark
+      let image = UIImage.crossMark
       let imageView = UIImageView(image: image)
       hud.customView = imageView
-      
+
+      // text
+      hud.label.text = title
+      hud.detailsLabel.text = message
+
+      // color
       hud.setForegroundColor(.white)
-      hud.setBackgroundColor(UIColor(red: 0.800, green: 0.078, blue: 0.034, alpha: 1))
+      hud.setBackgroundColor(UIColor.failure)
+      
+      
+      // apply extra change if any
+      change?(hud)
+
+      // hide
+      hud.hide(animated: true, afterDelay: interval)
     }
   }
 }

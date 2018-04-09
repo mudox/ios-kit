@@ -155,10 +155,10 @@ class MbpVC: FormViewController {
       $0.displayValueFor = { $0?.caseName ?? "nil" }
     }.onChange { [weak self] row in
       guard let ss = self else { return }
-      ss.view.mbp.blink(title: "\(row.value!)", message: "Test Animation Type") {
+      ss.view.mbp.execute(.success(title: "\(row.value!)") {
         hud in
         hud.animationType = row.value!
-      }
+      })
     }
 
     return section
@@ -214,40 +214,42 @@ class MbpVC: FormViewController {
       $0.title = "Simulate a Downloading Process"
     }.onCellSelection { [weak self] cell, row in
       guard let ss = self else { return }
-      let commands = Observable<MBPCommand>
-        .create { observer in
-          observer.onNext(.show(title: "Downloading ...") { hud in
-            hud.progress = 0
-            hud.mode = .annularDeterminate
-            hud.minSize = CGSize(width: 160, height: 100)
-          })
-
-          var progress = 0.0
-          while progress < 1.0 {
-            Thread.sleep(forTimeInterval: 0.05)
-            observer.onNext(.update(progress: progress))
-            progress += 0.02
-          }
-          if arc4random_uniform(2) == 0 {
-            observer.onNext(.failure())
-          } else {
-            observer.onNext(.success())
-          }
-          Thread.sleep(forTimeInterval: 2)
-          observer.onCompleted()
-
-          return Disposables.create()
-        }
-        .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
-
-      commands
-        .asDriver(onErrorJustReturn: .hide)
-        .drive(ss.view.mbp.hud)
-        .disposed(by: ss.disposeBag)
+      ss.simulate()
     }
 
     return section
 
+  }
+  
+  func simulate() {
+    let commands = Observable<MBPCommand>
+      .create { observer in
+        observer.onNext(.start(title: "Downloading ...", mode: .annularDeterminate) { hud in
+          hud.minSize = CGSize(width: 160, height: 100)
+          })
+        
+        var progress = 0.0
+        while progress < 1.0 {
+          Thread.sleep(forTimeInterval: 0.05)
+          observer.onNext(.update(progress: progress))
+          progress += 0.02
+        }
+        if arc4random_uniform(2) == 0 {
+          observer.onNext(.failure())
+        } else {
+          observer.onNext(.success())
+        }
+        Thread.sleep(forTimeInterval: 2)
+        observer.onCompleted()
+        
+        return Disposables.create()
+      }
+      .subscribeOn(ConcurrentDispatchQueueScheduler(qos: .default))
+    
+    commands
+      .asDriver(onErrorJustReturn: .failure(title: "Oops!"))
+      .drive(view.mbp.hud)
+      .disposed(by: disposeBag)
   }
 
   func makeUpdateCommand() -> MBPCommand {
@@ -262,7 +264,7 @@ class MbpVC: FormViewController {
     let height = CGFloat(values["height"] as! Float)
     let minSize = CGSize(width: width, height: height)
 
-    let command = MBPCommand.show(title: title, message: message, mode: mode) {
+    let command = MBPCommand.nextStep(title: title, message: message, mode: mode) {
       hud in
       hud.isSquare = isSquare
       hud.margin = margin

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "iOSKit_Example.app"
-               BlueprintName = "iOSKit_Example"
+               BuildableName = "Demo.app"
+               BlueprintName = "Demo"
                ReferencedContainer = "container:iOSKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F4F391BA2072495D00859BB7"
-               BuildableName = "iOSKit_ExampleTests.xctest"
-               BlueprintName = "iOSKit_ExampleTests"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
                ReferencedContainer = "container:iOSKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "iOSKit_Example.app"
-            BlueprintName = "iOSKit_Example"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
             ReferencedContainer = "container:iOSKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,8 +66,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "iOSKit_Example.app"
-            BlueprintName = "iOSKit_Example"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
             ReferencedContainer = "container:iOSKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -92,8 +92,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "iOSKit_Example.app"
-            BlueprintName = "iOSKit_Example"
+            BuildableName = "Demo.app"
+            BlueprintName = "Demo"
             ReferencedContainer = "container:iOSKit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

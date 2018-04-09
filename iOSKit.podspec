@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
   s.subspec 'MBP' do |ss|
     ss.source_files = 'iOSKit/MBP/**/*.swift'
     ss.dependency 'MBProgressHUD', '~> 1.0'
-    ss.resource_bundle = { 'Assets' => 'iOSKit/MBP/MBP.xcassets' }
+    ss.resource_bundle = { 'mbp' => 'iOSKit/MBP/MBP.xcassets' }
   end
 
   s.subspec 'SVP' do |ss|

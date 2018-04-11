@@ -125,7 +125,7 @@
 		40D376AF05E8A2A88B5D1E4B455441E2 /* Deferred.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDBF5BE81B4B06334F2C043EF41B6B48 /* Deferred.swift */; };
 		41C783192F7ECD485C8C6384D30CBF11 /* CwlDarwinDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA8615B2A5B69CB689144701F421B9 /* CwlDarwinDefinitions.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		42EAAE8CFB95F2352FCE036F263263E1 /* CwlCatchException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872920927A2DE59D86E07013BF18BA38 /* CwlCatchException.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
-		43143A4A5EB2D2C3359FF6B660C2E952 /* Int+TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51CB813B80D0B2A4BBBB546FF490AE /* Int+TimeInterval.swift */; };
+		43143A4A5EB2D2C3359FF6B660C2E952 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51CB813B80D0B2A4BBBB546FF490AE /* Int.swift */; };
 		434D4BB8F06A20A117414A11BCA974E1 /* UICollectionView+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB103D5B9A93F2EE0842D8B69CB70F4 /* UICollectionView+Rx.swift */; };
 		44B81BE1C2E504DA0517E913DA476C10 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9220DCBE968327A326ADAB857B0A698 /* QuartzCore.framework */; };
 		44C1CB38EE715B48B7DA8A41711CBB46 /* RuleEqualsToRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECA0D21D961F40BA5DC65FAC4D7AEAA /* RuleEqualsToRow.swift */; };
@@ -1009,7 +1009,7 @@
 		88524A9A04AB9845192845B2660B9AE7 /* OptionsRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OptionsRow.swift; path = Source/Rows/Common/OptionsRow.swift; sourceTree = "<group>"; };
 		88AE290030619F2F5B87E9C945683362 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		89AC30D7F76926BC8ED0C05C7AD07043 /* Pods-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		8A51CB813B80D0B2A4BBBB546FF490AE /* Int+TimeInterval.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Int+TimeInterval.swift"; path = "iOSKit/Core/Int+TimeInterval.swift"; sourceTree = "<group>"; };
+		8A51CB813B80D0B2A4BBBB546FF490AE /* Int.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Int.swift; path = iOSKit/Core/Int.swift; sourceTree = "<group>"; };
 		8B163CCFB67A15088ADEEAB9B380B98C /* SerialDispatchQueueScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SerialDispatchQueueScheduler.swift; path = RxSwift/Schedulers/SerialDispatchQueueScheduler.swift; sourceTree = "<group>"; };
 		8BD920EA720DE775AC07C491517A5F97 /* Bag+Rx.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bag+Rx.swift"; path = "RxSwift/Extensions/Bag+Rx.swift"; sourceTree = "<group>"; };
 		8C11248F0F3246CBA1758FE690A19CB4 /* GroupedObservable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GroupedObservable.swift; path = RxSwift/GroupedObservable.swift; sourceTree = "<group>"; };
@@ -1743,7 +1743,7 @@
 				33B15A39B0F4B65C51DF3C8B6D5FD1EF /* Errors.swift */,
 				D613CF7008DA560E6ECA220CA58A1F09 /* HasEnumNames.swift */,
 				DC3746E4F869B7E619E4DA48EB5B97C8 /* Inbox.swift */,
-				8A51CB813B80D0B2A4BBBB546FF490AE /* Int+TimeInterval.swift */,
+				8A51CB813B80D0B2A4BBBB546FF490AE /* Int.swift */,
 				C5D337CBC9BD15550B3B83FB94EC55DE /* Mudoxive.swift */,
 				173CC36374104CB399ECCB0260863E31 /* String.swift */,
 				AFDB9226771D40D445358F8B93CAD24D /* The.swift */,
@@ -2991,7 +2991,7 @@
 				0ABE667F871E05662AD663752EB12EC2 /* Errors.swift in Sources */,
 				5CA72B432E804205FE75D2857B68AE17 /* HasEnumNames.swift in Sources */,
 				B12846722EFFF58C07CFF0071B85B339 /* Inbox.swift in Sources */,
-				43143A4A5EB2D2C3359FF6B660C2E952 /* Int+TimeInterval.swift in Sources */,
+				43143A4A5EB2D2C3359FF6B660C2E952 /* Int.swift in Sources */,
 				63253161B782F995889C67BA01543A3B /* iOSKit-dummy.m in Sources */,
 				924715125C07131756335652F9449682 /* MBP.swift in Sources */,
 				6C7403D4242D9C764EE3093B9E6AF4D5 /* MBPCommand.swift in Sources */,

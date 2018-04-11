@@ -26,3 +26,22 @@ extension Int {
  }
 
 }
+
+extension Int {
+  var KB: Int {
+    return self * 1024
+  }
+  
+  var MB: Int {
+    return self * 1024.KB
+  }
+  
+  var GB: Int {
+    return self * 1024.MB
+  }
+  
+  
+  var TB: Int {
+    return self * 1024.GB
+  }
+}

@@ -109,7 +109,7 @@ extension The {
     public static var isSimulator: Bool {
       return The.app.mdx.isRunningOnSimulator
     }
-    
+
     // MARK: Device
     public static var deviceName: String {
       return The.device.name
@@ -120,7 +120,7 @@ extension The {
     public static var deviceUUID: String? {
       return The.device.identifierForVendor?.uuidString
     }
-    
+
     // MARK: System
     public static var systemName: String {
       return The.device.systemName
@@ -128,12 +128,12 @@ extension The {
     public static var systemVersion: String {
       return The.device.systemVersion
     }
-    
+
     // MARK: Screen
     public static var screenWidth: CGFloat {
       return The.mainScreen.bounds.width
     }
-    
+
     public static var screenHeight: CGFloat {
       return The.mainScreen.bounds.height
     }

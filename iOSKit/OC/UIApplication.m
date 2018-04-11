@@ -86,20 +86,20 @@ static const DDLogLevel ddLogLevel = DDLogLevelWarning;
   NSString *lines = [
     @[
       @"[App]",
-      [NSString stringWithFormat:@"  - ID:                %@", appID],
-      [NSString stringWithFormat:@"  - Release:           %@", appVersion],
-      [NSString stringWithFormat:@"  - Build:             %@", appBuild],
-      [NSString stringWithFormat:@"  - Debug:             %@", isDebugMode],
+      [NSString stringWithFormat:@"  - ID         :     %@", appID],
+      [NSString stringWithFormat:@"  - Release    :     %@", appVersion],
+      [NSString stringWithFormat:@"  - Build      :     %@", appBuild],
+      [NSString stringWithFormat:@"  - Debug      :     %@", isDebugMode],
 
       @"[Device]",
-      [NSString stringWithFormat:@"  - Name:              %@", deviceName],
-      [NSString stringWithFormat:@"  - Model:             %@", deviceModel],
-      [NSString stringWithFormat:@"  - UUID:              %@", deviceUUID],
-      [NSString stringWithFormat:@"  - Simulator:         %@", isSimulator],
+      [NSString stringWithFormat:@"  - Name       :     %@", deviceName],
+      [NSString stringWithFormat:@"  - Model      :     %@", deviceModel],
+      [NSString stringWithFormat:@"  - UUID       :     %@", deviceUUID],
+      [NSString stringWithFormat:@"  - Simulator  :     %@", isSimulator],
 
       @"[System]",
-      [NSString stringWithFormat:@"  - Name:              %@", systemName],
-      [NSString stringWithFormat:@"  - Version:           %@", systemVersion],
+      [NSString stringWithFormat:@"  - Name       :     %@", systemName],
+      [NSString stringWithFormat:@"  - Version    :     %@", systemVersion],
 
       @"\n",
     ] componentsJoinedByString: @"\n"];

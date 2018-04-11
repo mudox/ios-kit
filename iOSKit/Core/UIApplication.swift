@@ -82,20 +82,20 @@ extension Mudoxive where Base: UIApplication {
   public func dumpInfo() {
     let lines = """
       [App]
-        - Name:              \(The.processInfo.processName)
-        - ID:                \(The.mainBundle.bundleIdentifier ?? "N/A")
-        - Release:           \(The.mainBundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") ?? "N/A")  (CFBundleShortVersionString)
-        - Build:             \(The.mainBundle.object(forInfoDictionaryKey: kCFBundleVersionKey as String) ?? "N/A") (kCFBundleVersionKey)
-        - Debug:             \(The.app.mdx.isRunningInDebugMode)
-        - Simulator:         \(The.app.mdx.isRunningOnSimulator)
+        - Name       :   \(The.info.appName)
+        - ID         :   \(The.info.bundleID ?? "N/A")
+        - Release    :   \(The.info.appRelease ?? "N/A")  (CFBundleShortVersionString)
+        - Build      :   \(The.info.appBuild ?? "N/A") (kCFBundleVersionKey)
+        - Debug      :   \(The.info.isDebug)
+        - Simulator  :   \(The.info.isSimulator)
       [Device]
-        - Name:              \(The.device.name)
-        - Model:             \(The.device.localizedModel)
-        - UUID:              \(The.device.identifierForVendor!.uuidString)
+        - Name       :   \(The.info.deviceName)
+        - Model      :   \(The.info.deviceModel)
+        - UUID       :   \(The.info.deviceUUID ?? "N/A")
       [System]
-        - Name:              \(The.device.systemName)
-        - Version:           \(The.device.systemVersion)
-    """
-    jack.info(lines, from: .custom("App info"))
+        - Name       :   \(The.info.systemName)
+        - Version    :   \(The.info.systemVersion)
+      """
+    jack.info(lines, from: .custom("App \(The.info.appName) Launched"))
   }
 }

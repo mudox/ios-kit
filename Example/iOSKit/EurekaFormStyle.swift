@@ -47,7 +47,6 @@ func setupEurekaFormStyle() {
 
   PickerInlineRow<MBProgressHUDBackgroundStyle>.defaultCellUpdate = { cell, row in
     setLabel(cell.detailTextLabel!)
-    setLabel(cell.textLabel!)
   }
 }
 

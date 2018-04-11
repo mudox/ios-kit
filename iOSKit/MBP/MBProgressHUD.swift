@@ -44,7 +44,7 @@ extension MBProgressHUDAnimation: HasEnumNames {
     case .fade: return "fade"
     case .zoom: return "zoom"
     case .zoomOut: return "zoomOut"
-    case .zoomIn: return "oomIn"
+    case .zoomIn: return "zoomIn"
     }
   }
 }

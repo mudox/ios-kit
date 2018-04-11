@@ -42,15 +42,20 @@ class MainVC: FormViewController {
     }
 
     <<< ButtonRow() {
-      $0.title = "SVProgressHUD"
+      $0.title = "SVProgressHUD (WIP)"
       $0.presentationMode = .show(controllerProvider: .callback(builder: SvpVC.init), onDismiss: nil)
+      $0.disabled = true
+    }.cellUpdate { cell, row in
+      cell.textLabel?.textColor = .lightGray
     }
 
     <<< ButtonRow() {
-      $0.title = "NVActivityIndicatorView"
+      $0.title = "NVActivityIndicatorView (WIP)"
       $0.presentationMode = .show(controllerProvider: .callback(builder: NvaVC.init), onDismiss: nil)
+      $0.disabled = true
+    }.cellUpdate { cell, row in
+      cell.textLabel?.textColor = .lightGray
     }
-
   }
 
 }

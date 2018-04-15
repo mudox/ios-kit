@@ -22,7 +22,7 @@ extension UIImage {
     if let image = UIImage(named: "Check37", in: Bundle.assets, compatibleWith: nil) {
       return image
     } else {
-      jack.assertFailure("Loading image `Check37` failed")
+      jack.failure("Loading image `Check37` failed")
       return UIImage()
     }
   }
@@ -31,7 +31,7 @@ extension UIImage {
     if let image = UIImage(named: "Cross37", in: Bundle.assets, compatibleWith: nil) {
       return image
     } else {
-      jack.assertFailure("Loading image `Cross37` failed")
+      jack.failure("Loading image `Cross37` failed")
       return UIImage()
     }
   }

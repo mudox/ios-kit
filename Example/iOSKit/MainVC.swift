@@ -12,6 +12,7 @@ import RxSwift
 import RxCocoa
 
 import JacKit
+
 fileprivate let jack = Jack.with(levelOfThisFile: .debug)
 
 class MainVC: FormViewController {

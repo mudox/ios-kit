@@ -96,7 +96,7 @@ class AlertVC: FormViewController {
     }.onChange { [weak self] row in
       guard let ss = self else { return }
       if row.value == nil {
-        jack.assertFailure("Should not be nil")
+        jack.failure("Should not be nil")
       }
       ss.style.accept(row.value ?? .alert)
     }

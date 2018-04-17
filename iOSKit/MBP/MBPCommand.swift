@@ -29,7 +29,12 @@ public struct MBPCommand {
     self.change = change
   }
 
-  public static func start(title: String? = nil, message: String? = nil, mode: MBProgressHUDMode = .indeterminate, extra change: ChangeMBP? = nil) -> MBPCommand {
+  public static func start(
+    title: String? = nil,
+    message: String? = nil,
+    mode: MBProgressHUDMode = .indeterminate,
+    extra change: ChangeMBP? = nil
+  ) -> MBPCommand {
     return MBPCommand.init { view in
       // make sure hud is shown
       let hud = MBProgressHUD(for: view) ?? MBProgressHUD.showAdded(to: view, animated: true)
@@ -58,7 +63,13 @@ public struct MBPCommand {
     }
   }
 
-  public static func nextStep(title: String? = nil, message: String? = nil, progress: Double? = nil, mode: MBProgressHUDMode = .indeterminate, extra change: ChangeMBP? = nil) -> MBPCommand {
+  public static func nextStep(
+    title: String? = nil,
+    message: String? = nil,
+    progress: Double? = nil,
+    mode: MBProgressHUDMode = .indeterminate,
+    extra change: ChangeMBP? = nil
+  ) -> MBPCommand {
     return MBPCommand.init { view in
       // make sure hud is shown
       let hud = MBProgressHUD(for: view) ?? MBProgressHUD.showAdded(to: view, animated: true)
@@ -78,7 +89,12 @@ public struct MBPCommand {
     }
   }
 
-  public static func success(title: String? = nil, message: String? = nil, hideIn interval: TimeInterval = 1, extra change: ChangeMBP? = nil) -> MBPCommand {
+  public static func success(
+    title: String? = nil,
+    message: String? = nil,
+    hideIn interval: TimeInterval = 1,
+    extra change: ChangeMBP? = nil
+  ) -> MBPCommand {
     return MBPCommand.init { view in
       // make sure hud is shown
       let hud = MBProgressHUD(for: view) ?? MBProgressHUD.showAdded(to: view, animated: true)
@@ -99,8 +115,8 @@ public struct MBPCommand {
       // color
       hud.setForegroundColor(.white)
       hud.setBackgroundColor(UIColor.success)
-      
-      
+
+
       // apply extra change if any
       change?(hud)
 
@@ -130,8 +146,8 @@ public struct MBPCommand {
       // color
       hud.setForegroundColor(.white)
       hud.setBackgroundColor(UIColor.failure)
-      
-      
+
+
       // apply extra change if any
       change?(hud)
 

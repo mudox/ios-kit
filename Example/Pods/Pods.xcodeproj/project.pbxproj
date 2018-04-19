@@ -516,6 +516,10 @@
 		F370209070932B8B0236759BC0F0AC47 /* JacKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B8F70901809E8A04314928C5652BD75 /* JacKit.framework */; };
 		F3BAA36614ABDBC0538B0DEA99CF80A0 /* SourceLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8D2B9F52A89FCF71FF31FF3CC845F5 /* SourceLocation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		F3C5EDE33EC31AB69566A0268CA032B9 /* _RX.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B501216FE35105A4C8321E258E0AF9 /* _RX.m */; };
+		F4500B262088BD1100B4BF3E /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4500B252088BD1100B4BF3E /* UIImage.swift */; };
+		F4500B282088E96700B4BF3E /* With.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4500B272088E96700B4BF3E /* With.swift */; };
+		F4500B2A2088F65100B4BF3E /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4500B292088F65100B4BF3E /* Sequence.swift */; };
+		F4500B2C2089001C00B4BF3E /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4500B2B2089001C00B4BF3E /* Collection.swift */; };
 		F48AB8CB037DE95108048D89F9591FAC /* SingleAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC547F07F58527AFC089C22C530DCF0F /* SingleAsync.swift */; };
 		F4B0C3E3E10905970CE0D6F6B4C34DD6 /* Platform.Darwin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DBDDFA7051E18FB2560EA21E0D4A23 /* Platform.Darwin.swift */; };
 		F4BD249C60F21F5E0F7C1FAC8A5BC2AF /* BeIdenticalTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F22EC7A8BA7DA6911E5765B2C4E722C /* BeIdenticalTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -1257,6 +1261,10 @@
 		F2B7C9FFA9D21254EFEE49ABBFF540B6 /* Completable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Completable.swift; path = RxSwift/Traits/Completable.swift; sourceTree = "<group>"; };
 		F33F32C97B358DB89E55C06594850001 /* MBProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		F39FD1479F718AA64D216944CDB8DC52 /* Pods-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		F4500B252088BD1100B4BF3E /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIImage.swift; path = iOSKit/Core/UIImage.swift; sourceTree = "<group>"; };
+		F4500B272088E96700B4BF3E /* With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = With.swift; path = iOSKit/Core/With.swift; sourceTree = "<group>"; };
+		F4500B292088F65100B4BF3E /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sequence.swift; path = iOSKit/Core/Sequence.swift; sourceTree = "<group>"; };
+		F4500B2B2089001C00B4BF3E /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Collection.swift; path = iOSKit/Core/Collection.swift; sourceTree = "<group>"; };
 		F4D0B6A09D69EEC6C7FDBC40D485A1E9 /* HistoricalScheduler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HistoricalScheduler.swift; path = RxSwift/Schedulers/HistoricalScheduler.swift; sourceTree = "<group>"; };
 		F55FE292F4CC5899DA5BAEDF16FCEA3B /* Materialize.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Materialize.swift; path = RxSwift/Observables/Materialize.swift; sourceTree = "<group>"; };
 		F5C57EFE8A1663F944ABB982FCA4166A /* PublishSubject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PublishSubject.swift; path = RxSwift/Subjects/PublishSubject.swift; sourceTree = "<group>"; };
@@ -1739,15 +1747,19 @@
 		33296079F98A5C406A534D0851B769B1 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F4500B2B2089001C00B4BF3E /* Collection.swift */,
 				D72D6DCAD96C0109ED09521392DE7E68 /* CoreGraphics.swift */,
 				33B15A39B0F4B65C51DF3C8B6D5FD1EF /* Errors.swift */,
 				D613CF7008DA560E6ECA220CA58A1F09 /* HasEnumNames.swift */,
 				DC3746E4F869B7E619E4DA48EB5B97C8 /* Inbox.swift */,
 				8A51CB813B80D0B2A4BBBB546FF490AE /* Int.swift */,
 				C5D337CBC9BD15550B3B83FB94EC55DE /* Mudoxive.swift */,
+				F4500B292088F65100B4BF3E /* Sequence.swift */,
 				173CC36374104CB399ECCB0260863E31 /* String.swift */,
 				AFDB9226771D40D445358F8B93CAD24D /* The.swift */,
 				4BD1D44159CD15F7273ACCED0327B5A9 /* UIApplication.swift */,
+				F4500B252088BD1100B4BF3E /* UIImage.swift */,
+				F4500B272088E96700B4BF3E /* With.swift */,
 				25C8F6742211D18AD73AA2867E3EA0A5 /* View Controller */,
 			);
 			name = Core;
@@ -2987,14 +2999,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE13977AEC8C57A12B97D28D9B1DA586 /* AlertLayout.swift in Sources */,
+				F4500B262088BD1100B4BF3E /* UIImage.swift in Sources */,
 				BE5B267457A65FFAF2EFA1AE3F9F0788 /* CoreGraphics.swift in Sources */,
 				0ABE667F871E05662AD663752EB12EC2 /* Errors.swift in Sources */,
 				5CA72B432E804205FE75D2857B68AE17 /* HasEnumNames.swift in Sources */,
 				B12846722EFFF58C07CFF0071B85B339 /* Inbox.swift in Sources */,
+				F4500B2A2088F65100B4BF3E /* Sequence.swift in Sources */,
 				43143A4A5EB2D2C3359FF6B660C2E952 /* Int.swift in Sources */,
 				63253161B782F995889C67BA01543A3B /* iOSKit-dummy.m in Sources */,
 				924715125C07131756335652F9449682 /* MBP.swift in Sources */,
 				6C7403D4242D9C764EE3093B9E6AF4D5 /* MBPCommand.swift in Sources */,
+				F4500B282088E96700B4BF3E /* With.swift in Sources */,
 				8BB99CE3B4B8BFB69A0AEC2B61622D9C /* MBPProxy.swift in Sources */,
 				FF5B64406D65F09AB071F896D3D15973 /* MBProgressHUD.swift in Sources */,
 				48B53C6D8DAA1FB5AB07A565E8F09076 /* MDXNavigationController.swift in Sources */,
@@ -3002,6 +3017,7 @@
 				7BF6A8A07F5596ADBD00E0F2CACBEF63 /* Resources.swift in Sources */,
 				52818158068951206AB75B734D44FAC1 /* String.swift in Sources */,
 				C62BD405411DB094C666A6DF36304FD5 /* The.swift in Sources */,
+				F4500B2C2089001C00B4BF3E /* Collection.swift in Sources */,
 				5D351FB48B5AB8AD2BF653672BD3D5CE /* UIAlertController+mdx.swift in Sources */,
 				18EA51C2D7C13EFEE0EBC966D53AF5BD /* UIApplication.swift in Sources */,
 				CF6F5DB1ED149CAC8B5DE1D182AC5A55 /* UIVIew+HUD.swift in Sources */,

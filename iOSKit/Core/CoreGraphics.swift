@@ -8,6 +8,7 @@
 import Foundation
 
 extension CGSize {
+  
   func aspectFit(to size: CGSize) -> CGSize {
     let wFactor = size.width / width
     let hFactor = size.height / height
@@ -21,4 +22,5 @@ extension CGSize {
     let factor = max(wFactor, hFactor)
     return CGSize(width: width * factor, height: height * factor)
   }
+  
 }

@@ -9,39 +9,39 @@ import Foundation
 
 extension Int {
 
- var minuteInSecond: TimeInterval {
+ var minute: TimeInterval {
   return TimeInterval(60 * self)
  }
 
- var hourInSecond: TimeInterval {
-  return TimeInterval(60.minuteInSecond)
+ var hour: TimeInterval {
+  return TimeInterval(60.minute)
  }
 
- var dayInSecond: TimeInterval {
-  return TimeInterval(24 * hourInSecond)
+ var day: TimeInterval {
+  return TimeInterval(24 * hour)
  }
 
- var weekInSecond: TimeInterval {
-  return TimeInterval(7 * dayInSecond)
+ var week: TimeInterval {
+  return TimeInterval(7 * day)
  }
 
 }
 
 extension Int {
-  var KB: Int {
+  var kb: Int {
     return self * 1024
   }
   
-  var MB: Int {
-    return self * 1024.KB
+  var mb: Int {
+    return self * 1024.kb
   }
   
-  var GB: Int {
-    return self * 1024.MB
+  var gb: Int {
+    return self * 1024.mb
   }
   
   
-  var TB: Int {
-    return self * 1024.GB
+  var tb: Int {
+    return self * 1024.gb
   }
 }

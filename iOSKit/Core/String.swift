@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Common extension of `String` or `Substring`
 extension StringProtocol where Index == String.Index {
   
   public func trimmed() -> String {
@@ -23,6 +24,7 @@ extension StringProtocol where Index == String.Index {
 
 }
 
+// MARK: - Extension of `String`
 extension String {
   
   public var base64Decoded: String? {

@@ -20,6 +20,8 @@
 		F4AB6AAD20902C6300E5E7F3 /* SequenceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB6AAC20902C6300E5E7F3 /* SequenceSpec.swift */; };
 		F4AF82FF207104D7000D4802 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF82FE207104D7000D4802 /* MainVC.swift */; };
 		F4AF830420711B93000D4802 /* NavPopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF830320711B93000D4802 /* NavPopVC.swift */; };
+		F4B71D4F209516A4006ABA43 /* ArraySepc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B71D4E209516A4006ABA43 /* ArraySepc.swift */; };
+		F4B71D5120952715006ABA43 /* OptionalSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B71D5020952715006ABA43 /* OptionalSpec.swift */; };
 		F4E2F42120755ECD00603830 /* StringSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E2F42020755ECD00603830 /* StringSpec.swift */; };
 		F4E2F423207561A200603830 /* IntSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E2F422207561A100603830 /* IntSpec.swift */; };
 		F4FFEA562072FE3D0095A437 /* MbpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FFEA552072FE3D0095A437 /* MbpVC.swift */; };
@@ -64,6 +66,8 @@
 		F4AB6AAC20902C6300E5E7F3 /* SequenceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceSpec.swift; sourceTree = "<group>"; };
 		F4AF82FE207104D7000D4802 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		F4AF830320711B93000D4802 /* NavPopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPopVC.swift; sourceTree = "<group>"; };
+		F4B71D4E209516A4006ABA43 /* ArraySepc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArraySepc.swift; sourceTree = "<group>"; };
+		F4B71D5020952715006ABA43 /* OptionalSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalSpec.swift; sourceTree = "<group>"; };
 		F4BA20F220701CBC00A1BEC2 /* TheSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheSpec.swift; sourceTree = "<group>"; };
 		F4E2F42020755ECD00603830 /* StringSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSpec.swift; sourceTree = "<group>"; };
 		F4E2F422207561A100603830 /* IntSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntSpec.swift; sourceTree = "<group>"; };
@@ -185,7 +189,9 @@
 			children = (
 				F4F391BF2072495D00859BB7 /* Info.plist */,
 				F426346C207206E700E2962A /* AlertLayoutSpec.swift */,
+				F4B71D4E209516A4006ABA43 /* ArraySepc.swift */,
 				F4E2F422207561A100603830 /* IntSpec.swift */,
+				F4B71D5020952715006ABA43 /* OptionalSpec.swift */,
 				F4AB6AAC20902C6300E5E7F3 /* SequenceSpec.swift */,
 				F4E2F42020755ECD00603830 /* StringSpec.swift */,
 				F4BA20F220701CBC00A1BEC2 /* TheSpec.swift */,
@@ -411,7 +417,9 @@
 				F4AB6AAD20902C6300E5E7F3 /* SequenceSpec.swift in Sources */,
 				F47984C320724A2D00E64E48 /* AlertLayoutSpec.swift in Sources */,
 				F4E2F42120755ECD00603830 /* StringSpec.swift in Sources */,
+				F4B71D5120952715006ABA43 /* OptionalSpec.swift in Sources */,
 				F47984C420724A2D00E64E48 /* TheSpec.swift in Sources */,
+				F4B71D4F209516A4006ABA43 /* ArraySepc.swift in Sources */,
 				F4E2F423207561A200603830 /* IntSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

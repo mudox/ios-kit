@@ -88,7 +88,15 @@ public struct MBPCommand {
       change?(hud)
     }
   }
-
+  
+  /// Predefined appearance for success result.
+  ///
+  /// - Parameters:
+  ///   - title: Title string.
+  ///   - message: Message String.
+  ///   - interval: Interval in which to hide the HUD.
+  ///   - change: Extra modifications applied to the HUD.
+  /// - Returns: The MBPCommand to change the HUD states.
   public static func success(
     title: String? = nil,
     message: String? = nil,
@@ -125,6 +133,14 @@ public struct MBPCommand {
     }
   }
 
+  /// Predefined appearance for failure result.
+  ///
+  /// - Parameters:
+  ///   - title: Title string.
+  ///   - message: Message String.
+  ///   - interval: Interval in which to hide the HUD.
+  ///   - change: Extra modifications applied to the HUD.
+  /// - Returns: The MBPCommand to change the HUD states.
   public static func failure(title: String? = nil, message: String? = nil, hideIn interval: TimeInterval = 1, extra change: ChangeMBP? = nil) -> MBPCommand {
     return MBPCommand.init { view in
       // make sure hud is shown

@@ -3,9 +3,9 @@ import UIKit
 import JacKit
 fileprivate let jack = Jack.with(levelOfThisFile: .verbose)
 
-open class InteractivePopNavigationController: UINavigationController {
+open class NavigationController: UINavigationController {
 
-  public enum InteractivePopStyle {
+  public enum popStyle {
     case none
     case inherit
     case edge
@@ -35,7 +35,7 @@ open class InteractivePopNavigationController: UINavigationController {
 
   }
 
-  public var interactivePopStyle: InteractivePopStyle = .inherit {
+  public var interactivePopStyle: popStyle = .inherit {
     willSet {
       if (interactivePopStyle == newValue) {
         return

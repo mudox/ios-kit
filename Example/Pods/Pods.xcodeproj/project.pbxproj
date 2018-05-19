@@ -228,7 +228,7 @@
 		5B4364771253A6C8BDEB60975B365E05 /* ItemEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2EA5160D9FBE389602FCA8E9A41D961 /* ItemEvents.swift */; };
 		5C7C2FB9F88BA5CA268333E7FAF37941 /* NMBExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BDBAC782A96B16F67984648D737EA /* NMBExpectation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		5CCC5CB2F07A0E48A61B961E1314222A /* ControlTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6666DC8C5E33F953F0106DC77FB83CBF /* ControlTarget.swift */; };
-		5D5B76518B6A88B8503875CFFE6F1693 /* InteractivePopNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309E55F76A71D594524DCCF381E77D76 /* InteractivePopNavigationController.swift */; };
+		5D5B76518B6A88B8503875CFFE6F1693 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309E55F76A71D594524DCCF381E77D76 /* NavigationController.swift */; };
 		5E32580253522CDB6208E0FA839742E7 /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFF5313916183936547DE3BB3653631 /* NVActivityIndicatorAnimationBallPulseSync.swift */; };
 		5E7121A2441E4FBBFE16E1D51690656E /* CombineLatest+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8626711F00885CC755E161157524D1B2 /* CombineLatest+Collection.swift */; };
 		5EF67D8706E86B119B5A4D58153EC99B /* SynchronizedDisposeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248BBCAD2C7E6A349C5B6D24958D2C86 /* SynchronizedDisposeType.swift */; };
@@ -922,7 +922,7 @@
 		2FD3323C817BCF572A59C4AB39908B37 /* CellType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CellType.swift; path = Source/Core/CellType.swift; sourceTree = "<group>"; };
 		2FFC2232314778298E2C3C3799E9B721 /* NVActivityIndicatorAnimationBallGridBeat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NVActivityIndicatorAnimationBallGridBeat.swift; path = Source/NVActivityIndicatorView/Animations/NVActivityIndicatorAnimationBallGridBeat.swift; sourceTree = "<group>"; };
 		302DB164BCEF68823C995E08C1D54F47 /* DispatchQueueConfiguration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DispatchQueueConfiguration.swift; path = RxSwift/Schedulers/Internal/DispatchQueueConfiguration.swift; sourceTree = "<group>"; };
-		309E55F76A71D594524DCCF381E77D76 /* InteractivePopNavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InteractivePopNavigationController.swift; sourceTree = "<group>"; };
+		309E55F76A71D594524DCCF381E77D76 /* NavigationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		30D5F8E0306540706F274AEEA5E1E220 /* iOSKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSKit-umbrella.h"; sourceTree = "<group>"; };
 		312973A53985C244B84A2FD48B5DC89B /* NVActivityIndicatorAnimationBallZigZagDeflect.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NVActivityIndicatorAnimationBallZigZagDeflect.swift; path = Source/NVActivityIndicatorView/Animations/NVActivityIndicatorAnimationBallZigZagDeflect.swift; sourceTree = "<group>"; };
 		31390E5E5369EEF7D988F9BE671CD392 /* JacKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JacKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2760,7 +2760,7 @@
 			isa = PBXGroup;
 			children = (
 				67C71A1F19C63E31B43A3061ADA688F3 /* CastOrThrow.swift */,
-				309E55F76A71D594524DCCF381E77D76 /* InteractivePopNavigationController.swift */,
+				309E55F76A71D594524DCCF381E77D76 /* NavigationController.swift */,
 				925984201DC75370703F08C9974A1222 /* UIViewController+Mdx.swift */,
 				CE27FE64F9A5A9715AE7056D5FBC81BD /* CLLocationManager */,
 				69BE40E68B0B4C0C3ECD82C153058CB1 /* UIAlertController */,
@@ -3892,7 +3892,7 @@
 				DFB9438E52E627E6B7DAA57A4F298390 /* Inbox.swift in Sources */,
 				BFE40F955C8B946F6FECAF9225EB4B11 /* Info.swift in Sources */,
 				D5EEE39F98F3996CEB25AD4B92F30087 /* Int.swift in Sources */,
-				5D5B76518B6A88B8503875CFFE6F1693 /* InteractivePopNavigationController.swift in Sources */,
+				5D5B76518B6A88B8503875CFFE6F1693 /* NavigationController.swift in Sources */,
 				14E5EBBC6B2805C01B4B705F79ACEBFA /* iOSKit-dummy.m in Sources */,
 				12D102B944C00FD980C318D2D26CDF38 /* JSON+takeOrThrow.swift in Sources */,
 				56013E02E0AF3DC1739DAF8255EA4E9E /* MBP.swift in Sources */,

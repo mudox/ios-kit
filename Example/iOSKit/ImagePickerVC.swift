@@ -20,9 +20,15 @@ class ImagePickerVC: FormViewController {
 
     setupForm()
   }
+  
+  var sourceType: UIImagePickerControllerSourceType {
+    return form.values()["sourceType"] as! UIImagePickerControllerSourceType
+  }
 
   fileprivate func setupForm() {
 
+    form.inlineRowHideOptions = [.AnotherInlineRowIsShown, .FirstResponderChanges]
+    
     form +++ Section("SETTINGS")
 
     <<< PickerInlineRow<UIImagePickerControllerSourceType>("sourceType") {
@@ -41,7 +47,7 @@ class ImagePickerVC: FormViewController {
     }.onCellSelection { [weak self] cell, row in
       guard let ss = self else { return }
       MediaPicker
-        .image(from: .photoLibrary, presenter: ss)
+        .image(from: ss.sourceType, presenter: ss)
         .subscribe(onSuccess: { print("image: \($0)") }, onError: { print("error: \($0)") })
         .disposed(by: ss.disposeBag)
     }

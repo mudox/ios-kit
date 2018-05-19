@@ -8,6 +8,17 @@ fileprivate let jack = Jack.with(levelOfThisFile: .verbose)
 
 public struct MediaPicker {
 
+  /// Pick a image using `UIImagePickerController`, using the default media type `kUTTypeImage`.
+  ///
+  /// - Parameters:
+  ///   - sourceType: The type of picker interface to be displayed by the controller.
+  ///   - presenter: The view controller to present the picker controller, if nil
+  ///     try using the root view controller. A __error__ may be thrown if the presenter
+  ///     is already preseting a view controller.
+  ///   - animated: Pass true to animate the presentation; otherwise, pass false.
+  ///   - configure: Put custom configuration to the picker controller in it if any.
+  ///     Setting the __delegate__ property in this block has no effect.
+  /// - Returns: `Single<UIImage>`.
   public static func image(
     from sourceType: UIImagePickerControllerSourceType,
     presenter: UIViewController? = nil,

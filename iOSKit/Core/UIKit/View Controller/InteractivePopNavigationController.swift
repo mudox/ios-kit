@@ -1,37 +1,22 @@
-//
-//  UINavigationController.swift
-//  iOSKit
-//
-//  Created by Mudox on 01/04/2018.
-//
-
 import UIKit
 
 import JacKit
 fileprivate let jack = Jack.with(levelOfThisFile: .verbose)
 
-public class MDXNavigationController: UINavigationController {
+open class InteractivePopNavigationController: UINavigationController {
 
-  public enum InteractivePopStyle: CustomStringConvertible {
-    
+  public enum InteractivePopStyle {
     case none
     case inherit
     case edge
     case anywhere
-
-    public var description: String {
-      switch self {
-      case .none: return "MDXNavigationController.InteractivePopStyle.none"
-      case .inherit: return "MDXNavigationController.InteractivePopStyle.inherit"
-      case .edge: return "MDXNavigationController.InteractivePopStyle.edge"
-      case .anywhere: return "MDXNavigationController.InteractivePopStyle.anywhere"
-      }
-    }
-    
   }
 
-  public override func viewDidLoad() {
-    
+  fileprivate var _panAnywhereToPop: UIPanGestureRecognizer!
+  fileprivate var _popTransitionController: UIGestureRecognizerDelegate!
+
+  open override func viewDidLoad() {
+
     super.viewDidLoad()
 
     if _popTransitionController == nil {
@@ -47,13 +32,8 @@ public class MDXNavigationController: UINavigationController {
       _panAnywhereToPop?.isEnabled = false
       view.addGestureRecognizer(_panAnywhereToPop!)
     }
-    
+
   }
-
-  private var _panAnywhereToPop: UIPanGestureRecognizer!
-
-  private var _popTransitionController: UIGestureRecognizerDelegate!
-
 
   public var interactivePopStyle: InteractivePopStyle = .inherit {
     willSet {
@@ -84,7 +64,7 @@ public class MDXNavigationController: UINavigationController {
 
 }
 
-extension MDXNavigationController: UIGestureRecognizerDelegate {
+extension InteractivePopNavigationController: UIGestureRecognizerDelegate {
   public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     let moreThanOneContentViewControllers = viewControllers.count > 1
 
@@ -97,3 +77,15 @@ extension MDXNavigationController: UIGestureRecognizerDelegate {
   }
 }
 
+extension InteractivePopNavigationController.InteractivePopStyle: CustomStringConvertible {
+
+  public var description: String {
+    switch self {
+    case .none: return "InteractivePopNavigationController.InteractivePopStyle.none"
+    case .inherit: return "InteractivePopNavigationController.InteractivePopStyle.inherit"
+    case .edge: return "InteractivePopNavigationController.InteractivePopStyle.edge"
+    case .anywhere: return "InteractivePopNavigationController.InteractivePopStyle.anywhere"
+    }
+  }
+
+}

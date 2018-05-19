@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1oa-wF-Fjf">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +8,7 @@
         <!--Root Navigation-->
         <scene sceneID="5al-CZ-MUl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1oa-wF-Fjf" userLabel="Root Navigation" customClass="MDXNavigationController" customModule="iOSKit" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1oa-wF-Fjf" userLabel="Root Navigation" customClass="InteractivePopNavigationController" customModule="iOSKit" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qgP-cj-kem">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -36,7 +32,7 @@
                         <viewControllerLayoutGuide type="bottom" id="mCQ-Xu-Tzk"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SKB-b9-sVt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

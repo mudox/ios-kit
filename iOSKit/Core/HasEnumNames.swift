@@ -8,23 +8,23 @@
 import UIKit
 
 protocol HasEnumNames {
-  
+
   static var enumName: String { get }
   var fullName: String { get }
   var caseName: String { get }
-  
+
 }
 
 extension HasEnumNames {
-  
+
   public var fullName: String {
     return "\(Self.enumName).\(caseName)"
   }
-  
+
 }
 
 extension UIAlertControllerStyle: HasEnumNames {
-  
+
   public static let enumName = "UIAlertControllerStyle"
 
   public var caseName: String {
@@ -34,4 +34,18 @@ extension UIAlertControllerStyle: HasEnumNames {
     }
   }
 
+}
+
+extension UIImagePickerControllerSourceType: HasEnumNames {
+
+  public static let enumName = "UIImagePickerControllerSourceType"
+
+  public var caseName: String {
+    switch self {
+    case .camera: return "camera"
+    case .photoLibrary: return "photoLibrary"
+    case .savedPhotosAlbum: return "savedPhotosAlbum"
+    }
+  }
+  
 }

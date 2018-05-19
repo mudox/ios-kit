@@ -36,30 +36,44 @@ Pod::Spec.new do |s|
     core.dependency 'RxCocoa'
   end
 
-  s.subspec 'MBP' do |ss|
-    ss.source_files = 'iOSKit/MBP/**/*.swift'
-    ss.dependency 'MBProgressHUD', '~> 1.0'
+  s.subspec 'MBProgressHUD' do |ss|
+    ss.source_files = 'iOSKit/MBProgressHUD/**/*.swift'
+    ss.dependency 'MBProgressHUD'
     ss.resource_bundle = { 'mbp' => 'iOSKit/MBP/MBP.xcassets' }
   end
 
-  s.subspec 'SVP' do |ss|
-  ss.source_files = 'iOSKit/SVP/**/*'
-  ss.dependency 'SVProgressHUD'
+  s.subspec 'SVProgressHUD' do |ss|
+    ss.source_files = 'iOSKit/SVProgressHUD/**/*'
+    ss.dependency 'SVProgressHUD'
   end
 
-  s.subspec 'NVA' do |ss|
-    ss.source_files = 'iOSKit/NVA/**/*'
-    ss.dependency 'MBProgressHUD', '~> 1.0'
+  s.subspec 'NVActivityIndicatorView' do |ss|
+    ss.source_files = 'iOSKit/NVActivityIndicatorView/**/*'
+    ss.dependency 'NVActivityIndicatorView'
   end
 
-
-  s.subspec 'OC' do |ss|
-  ss.source_files = 'iOSKit/OC/**/*'
+  s.subspec 'ObjectiveC' do |ss|
+    ss.source_files = 'iOSKit/ObjectiveC/**/*'
   end
 
   s.subspec 'SwiftyJSON' do |ss|
     ss.source_files = 'iOSKit/SwiftyJSON/**/*'
     ss.dependency 'SwiftyJSON'
+  end
+
+  s.subspec 'RxSwift' do |ss|
+    ss.source_files = 'iOSKit/RxSwift/**/*'
+    ss.dependency 'RxSwift'
+  end
+
+  s.subspec 'All' do |ss|
+    ss.dependency 'iOSKit/Core'
+    ss.dependency 'iOSKit/MBProgressHUD'
+    ss.dependency 'iOSKit/SVProgressHUD'
+    ss.dependency 'iOSKit/NVActivityIndicatorView'
+    ss.dependency 'iOSKit/RxSwift'
+    ss.dependency 'iOSKit/SwiftyJSON'
+    ss.dependency 'iOSKit/ObjectiveC'
   end
 
 end

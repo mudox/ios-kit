@@ -4,6 +4,17 @@ import Foundation
 
 infix operator ???: NilCoalescingPrecedence
 
+/// Operator ???
+/// Similar as the nil coaleascing operator `??`, but always return a String.
+/// Typically used for output.
+///
+///     var a: Int? = nil
+///     print("a: \(a ??? "nil")")
+///
+/// - Parameters:
+///   - optional: The optional value.
+///   - elseString: Fall back string if the optional value is nil.
+/// - Returns: The string that describing the optional value.
 public func ???<T>(optional: T?, elseString: @autoclosure () -> String) -> String
 {
   switch optional {
@@ -16,15 +27,16 @@ public func ???<T>(optional: T?, elseString: @autoclosure () -> String) -> Strin
 
 infix operator !!
 
-/// Operator !!, improve the message show when force-unwrap fails.
+/// Operator !!
+/// Improve the message show when force-unwrapping fails.
 ///
 /// - Parameters:
-///   - wrapped: The optional to force-unwrap.
+///   - wrapped: The optional value.
 ///   - failureDescription: The custom failure message.
 /// - Returns: The unwraped value if any.
 func !! <T>(wrapped: T?, failureDescription: @autoclosure () -> String) -> T {
-  if let x = wrapped {
-    return x
+  if let unwrapped = wrapped {
+    return unwrapped
   } else {
     fatalError(failureDescription())
   }
@@ -34,7 +46,9 @@ func !! <T>(wrapped: T?, failureDescription: @autoclosure () -> String) -> T {
 
 infix operator !?
 
-/// Operator !?, if the left operand is nil, panic with specified message in debug, reutrn a fallback value in release mode.
+/// Operator !?
+/// If the left operand is nil, panic with specified message in debug mode,
+/// while return a fallback value in release mode.
 ///
 /// - Parameters:
 ///   - wrapped: The optional value to force unwrap conditionally.

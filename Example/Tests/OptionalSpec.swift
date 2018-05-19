@@ -7,7 +7,7 @@ import Nimble
 class OptionalSpec: QuickSpec {
   override func spec() {
 
-    fdescribe("Optional") {
+    describe("Optional") {
 
       it("triple question mark opterator") {
         let a: Int? = nil

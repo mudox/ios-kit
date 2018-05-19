@@ -34,11 +34,11 @@
       }
     },
     {
-      "name": "MBP",
-      "source_files": "iOSKit/MBP/**/*.swift",
+      "name": "MBProgressHUD",
+      "source_files": "iOSKit/MBProgressHUD/**/*.swift",
       "dependencies": {
         "MBProgressHUD": [
-          "~> 1.0"
+
         ]
       },
       "resource_bundles": {
@@ -46,8 +46,8 @@
       }
     },
     {
-      "name": "SVP",
-      "source_files": "iOSKit/SVP/**/*",
+      "name": "SVProgressHUD",
+      "source_files": "iOSKit/SVProgressHUD/**/*",
       "dependencies": {
         "SVProgressHUD": [
 
@@ -55,23 +55,58 @@
       }
     },
     {
-      "name": "NVA",
-      "source_files": "iOSKit/NVA/**/*",
+      "name": "NVActivityIndicatorView",
+      "source_files": "iOSKit/NVActivityIndicatorView/**/*",
       "dependencies": {
-        "MBProgressHUD": [
-          "~> 1.0"
+        "NVActivityIndicatorView": [
+
         ]
       }
     },
     {
-      "name": "OC",
-      "source_files": "iOSKit/OC/**/*"
+      "name": "ObjectiveC",
+      "source_files": "iOSKit/ObjectiveC/**/*"
     },
     {
       "name": "SwiftyJSON",
       "source_files": "iOSKit/SwiftyJSON/**/*",
       "dependencies": {
         "SwiftyJSON": [
+
+        ]
+      }
+    },
+    {
+      "name": "RxSwift",
+      "source_files": "iOSKit/RxSwift/**/*",
+      "dependencies": {
+        "RxSwift": [
+
+        ]
+      }
+    },
+    {
+      "name": "All",
+      "dependencies": {
+        "iOSKit/Core": [
+
+        ],
+        "iOSKit/MBProgressHUD": [
+
+        ],
+        "iOSKit/SVProgressHUD": [
+
+        ],
+        "iOSKit/NVActivityIndicatorView": [
+
+        ],
+        "iOSKit/RxSwift": [
+
+        ],
+        "iOSKit/SwiftyJSON": [
+
+        ],
+        "iOSKit/ObjectiveC": [
 
         ]
       }

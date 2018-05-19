@@ -14,10 +14,12 @@
 		68CF63F598152C517E6D6B54 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F211229F5F327B2B21A390 /* Pods_Demo.framework */; };
 		C951F5410D1B03A186876214 /* Pods_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73506BF510A4A182A2AE2DEF /* Pods_Tests.framework */; };
 		F47984C320724A2D00E64E48 /* AlertLayoutSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F426346C207206E700E2962A /* AlertLayoutSpec.swift */; };
-		F47984C420724A2D00E64E48 /* TheSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA20F220701CBC00A1BEC2 /* TheSpec.swift */; };
+		F47984C420724A2D00E64E48 /* InfoSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA20F220701CBC00A1BEC2 /* InfoSpec.swift */; };
 		F4835DD6207277A90038532D /* AlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4835DD5207277A90038532D /* AlertVC.swift */; };
+		F4A293FD20A962C900AC3FA5 /* WithSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A293FC20A962C800AC3FA5 /* WithSpec.swift */; };
 		F4A558B32076B7D5005C5993 /* EurekaFormStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A558B22076B7D5005C5993 /* EurekaFormStyle.swift */; };
 		F4AB6AAD20902C6300E5E7F3 /* SequenceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AB6AAC20902C6300E5E7F3 /* SequenceSpec.swift */; };
+		F4AE51C420ADA10E00318DCE /* ImagePickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AE51C320ADA10E00318DCE /* ImagePickerVC.swift */; };
 		F4AF82FF207104D7000D4802 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF82FE207104D7000D4802 /* MainVC.swift */; };
 		F4AF830420711B93000D4802 /* NavPopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF830320711B93000D4802 /* NavPopVC.swift */; };
 		F4B71D4F209516A4006ABA43 /* ArraySepc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4B71D4E209516A4006ABA43 /* ArraySepc.swift */; };
@@ -62,13 +64,15 @@
 		F27FBAF898415DBEDE1DFF30 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		F426346C207206E700E2962A /* AlertLayoutSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertLayoutSpec.swift; sourceTree = "<group>"; };
 		F4835DD5207277A90038532D /* AlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVC.swift; sourceTree = "<group>"; };
+		F4A293FC20A962C800AC3FA5 /* WithSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithSpec.swift; sourceTree = "<group>"; };
 		F4A558B22076B7D5005C5993 /* EurekaFormStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurekaFormStyle.swift; sourceTree = "<group>"; };
 		F4AB6AAC20902C6300E5E7F3 /* SequenceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceSpec.swift; sourceTree = "<group>"; };
+		F4AE51C320ADA10E00318DCE /* ImagePickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerVC.swift; sourceTree = "<group>"; };
 		F4AF82FE207104D7000D4802 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		F4AF830320711B93000D4802 /* NavPopVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavPopVC.swift; sourceTree = "<group>"; };
 		F4B71D4E209516A4006ABA43 /* ArraySepc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArraySepc.swift; sourceTree = "<group>"; };
 		F4B71D5020952715006ABA43 /* OptionalSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalSpec.swift; sourceTree = "<group>"; };
-		F4BA20F220701CBC00A1BEC2 /* TheSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheSpec.swift; sourceTree = "<group>"; };
+		F4BA20F220701CBC00A1BEC2 /* InfoSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSpec.swift; sourceTree = "<group>"; };
 		F4E2F42020755ECD00603830 /* StringSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSpec.swift; sourceTree = "<group>"; };
 		F4E2F422207561A100603830 /* IntSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntSpec.swift; sourceTree = "<group>"; };
 		F4F391BB2072495D00859BB7 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +147,7 @@
 				F4FFEA572072FEB90095A437 /* NvaVC.swift */,
 				F4FFEA582072FEB90095A437 /* SvpVC.swift */,
 				F4835DD5207277A90038532D /* AlertVC.swift */,
+				F4AE51C320ADA10E00318DCE /* ImagePickerVC.swift */,
 				F4AF830320711B93000D4802 /* NavPopVC.swift */,
 				F4AF82FE207104D7000D4802 /* MainVC.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
@@ -188,13 +193,14 @@
 			isa = PBXGroup;
 			children = (
 				F4F391BF2072495D00859BB7 /* Info.plist */,
+				F4A293FC20A962C800AC3FA5 /* WithSpec.swift */,
 				F426346C207206E700E2962A /* AlertLayoutSpec.swift */,
 				F4B71D4E209516A4006ABA43 /* ArraySepc.swift */,
 				F4E2F422207561A100603830 /* IntSpec.swift */,
 				F4B71D5020952715006ABA43 /* OptionalSpec.swift */,
 				F4AB6AAC20902C6300E5E7F3 /* SequenceSpec.swift */,
 				F4E2F42020755ECD00603830 /* StringSpec.swift */,
-				F4BA20F220701CBC00A1BEC2 /* TheSpec.swift */,
+				F4BA20F220701CBC00A1BEC2 /* InfoSpec.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -371,9 +377,11 @@
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/JacKit/JacKit.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/iOSKit/iOSKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -382,9 +390,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JacKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/iOSKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +414,7 @@
 				F4A558B32076B7D5005C5993 /* EurekaFormStyle.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				F4AF82FF207104D7000D4802 /* MainVC.swift in Sources */,
+				F4AE51C420ADA10E00318DCE /* ImagePickerVC.swift in Sources */,
 				F4FFEA5A2072FEB90095A437 /* SvpVC.swift in Sources */,
 				F4FFEA562072FE3D0095A437 /* MbpVC.swift in Sources */,
 				F4FFEA592072FEB90095A437 /* NvaVC.swift in Sources */,
@@ -414,11 +425,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4A293FD20A962C900AC3FA5 /* WithSpec.swift in Sources */,
 				F4AB6AAD20902C6300E5E7F3 /* SequenceSpec.swift in Sources */,
 				F47984C320724A2D00E64E48 /* AlertLayoutSpec.swift in Sources */,
 				F4E2F42120755ECD00603830 /* StringSpec.swift in Sources */,
 				F4B71D5120952715006ABA43 /* OptionalSpec.swift in Sources */,
-				F47984C420724A2D00E64E48 /* TheSpec.swift in Sources */,
+				F47984C420724A2D00E64E48 /* InfoSpec.swift in Sources */,
 				F4B71D4F209516A4006ABA43 /* ArraySepc.swift in Sources */,
 				F4E2F423207561A200603830 /* IntSpec.swift in Sources */,
 			);
@@ -504,6 +516,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -549,6 +562,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

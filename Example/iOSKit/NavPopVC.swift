@@ -3,13 +3,13 @@ import Eureka
 import iOSKit
 
 class NavPopVC: FormViewController {
-  var popStyle: MDXNavigationController.InteractivePopStyle {
+  var popStyle: InteractivePopNavigationController.InteractivePopStyle {
     get {
-      let vc = The.mainWindow.rootViewController as! MDXNavigationController
+      let vc = The.mainWindow.rootViewController as! InteractivePopNavigationController
       return vc.interactivePopStyle
     }
     set {
-      let vc = The.mainWindow.rootViewController as! MDXNavigationController
+      let vc = The.mainWindow.rootViewController as! InteractivePopNavigationController
       vc.interactivePopStyle = newValue
     }
   }
@@ -19,12 +19,12 @@ class NavPopVC: FormViewController {
 
     form +++ Section("Chooose a Interactive pop styles")
     
-    let options: [MDXNavigationController.InteractivePopStyle] = [
+    let options: [InteractivePopNavigationController.InteractivePopStyle] = [
         .none, .inherit, .edge, .anywhere
     ]
 
     for style in options {
-      form.last! <<< ButtonRowOf<MDXNavigationController.InteractivePopStyle>() {
+      form.last! <<< ButtonRowOf<InteractivePopNavigationController.InteractivePopStyle>() {
         let fullName = String(describing: style)
         $0.title = String(fullName.dropFirst(44))
         $0.value = style

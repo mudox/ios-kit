@@ -88,7 +88,7 @@ public struct MBPCommand {
       change?(hud)
     }
   }
-  
+
   /// Predefined appearance for success result.
   ///
   /// - Parameters:
@@ -121,8 +121,8 @@ public struct MBPCommand {
       hud.detailsLabel.text = message
 
       // color
-      hud.setForegroundColor(.white)
-      hud.setBackgroundColor(UIColor.success)
+      hud.setForeground(color: .white)
+      hud.setBackground(color: .success)
 
 
       // apply extra change if any
@@ -160,8 +160,8 @@ public struct MBPCommand {
       hud.detailsLabel.text = message
 
       // color
-      hud.setForegroundColor(.white)
-      hud.setBackgroundColor(UIColor.failure)
+      hud.setForeground(color: .white)
+      hud.setBackground(color: .failure)
 
 
       // apply extra change if any

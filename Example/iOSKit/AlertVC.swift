@@ -79,7 +79,6 @@ private struct ViewModel {
 
 class AlertVC: FormViewController {
 
-
   var disposeBag = DisposeBag()
 
   let layout = BehaviorRelay<String>(value: "")

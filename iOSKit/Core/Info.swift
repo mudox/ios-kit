@@ -15,10 +15,10 @@ public enum Info {
     return The.mainBundle.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
   }
   public static var isDebug: Bool {
-    return The.app.mdx.isRunningInDebugMode
+    return The.app.mdx.isInDebugMode
   }
   public static var isSimulator: Bool {
-    return The.app.mdx.isRunningOnSimulator
+    return The.app.mdx.isInSimulator
   }
 
   // MARK: Device

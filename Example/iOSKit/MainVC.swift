@@ -26,12 +26,17 @@ class MainVC: FormViewController {
     form +++ Section("View Controller Extensions")
 
     <<< ButtonRow() {
-      $0.title = "UIAlertController Layout String"
+      $0.title = "UIAlertController"
       $0.presentationMode = .show(controllerProvider: .callback(builder: AlertVC.init), onDismiss: nil)
     }
 
     <<< ButtonRow() {
-      $0.title = "Interactive Pop"
+      $0.title = "UIImagePickerController"
+      $0.presentationMode = .show(controllerProvider: .callback(builder: ImagePickerVC.init), onDismiss: nil)
+    }
+      
+    <<< ButtonRow() {
+      $0.title = "UINavigationController"
       $0.presentationMode = .show(controllerProvider: .callback(builder: NavPopVC.init), onDismiss: nil)
     }
 

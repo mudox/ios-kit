@@ -35,13 +35,14 @@ public enum The {
     return UIScreen.main
   }
 
-  /**
-    **UIApplication.shared.windows.first**, while **UIApplication.shared.keyWindow** may be attached external window.
-    - important: Make sure the window is already created before access or
-      the app would crash for nil unwrap
-  */
+  /// UIApplication.shared.windows.first!
   public static var mainWindow: UIWindow {
     return The.app.windows.first!
+  }
+
+  /// UIApplication.shared.windows.first!.rootViewController
+  public static var rootViewController: UIViewController? {
+    return The.mainWindow.rootViewController
   }
 
   /// NofiticationCenter.default

@@ -5,7 +5,7 @@ fileprivate let jack = Jack.with(levelOfThisFile: .verbose)
 
 open class NavigationController: UINavigationController {
 
-  public enum popStyle {
+  public enum PopStyle {
     case none
     case inherit
     case edge
@@ -35,9 +35,9 @@ open class NavigationController: UINavigationController {
 
   }
 
-  public var interactivePopStyle: popStyle = .inherit {
+  public var popStyle: PopStyle = .inherit {
     willSet {
-      if (interactivePopStyle == newValue) {
+      if (popStyle == newValue) {
         return
       }
 
@@ -64,7 +64,7 @@ open class NavigationController: UINavigationController {
 
 }
 
-extension InteractivePopNavigationController: UIGestureRecognizerDelegate {
+extension NavigationController: UIGestureRecognizerDelegate {
   public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     let moreThanOneContentViewControllers = viewControllers.count > 1
 
@@ -77,14 +77,14 @@ extension InteractivePopNavigationController: UIGestureRecognizerDelegate {
   }
 }
 
-extension InteractivePopNavigationController.InteractivePopStyle: CustomStringConvertible {
+extension NavigationController.PopStyle: CustomStringConvertible {
 
   public var description: String {
     switch self {
-    case .none: return "InteractivePopNavigationController.InteractivePopStyle.none"
-    case .inherit: return "InteractivePopNavigationController.InteractivePopStyle.inherit"
-    case .edge: return "InteractivePopNavigationController.InteractivePopStyle.edge"
-    case .anywhere: return "InteractivePopNavigationController.InteractivePopStyle.anywhere"
+    case .none: return "NavigationController.PopStyle.none"
+    case .inherit: return "NavigationController.PopStyle.inherit"
+    case .edge: return "NavigationController.PopStyle.edge"
+    case .anywhere: return "NavigationController.PopStyle.anywhere"
     }
   }
 

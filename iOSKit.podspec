@@ -61,17 +61,11 @@ Pod::Spec.new do |s|
     ss.dependency 'SwiftyJSON'
   end
 
-  s.subspec 'RxSwift' do |ss|
-    ss.source_files = 'iOSKit/RxSwift/**/*'
-    ss.dependency 'RxSwift'
-  end
-
   s.subspec 'All' do |ss|
     ss.dependency 'iOSKit/Core'
     ss.dependency 'iOSKit/MBProgressHUD'
     ss.dependency 'iOSKit/SVProgressHUD'
     ss.dependency 'iOSKit/NVActivityIndicatorView'
-    ss.dependency 'iOSKit/RxSwift'
     ss.dependency 'iOSKit/SwiftyJSON'
     ss.dependency 'iOSKit/ObjectiveC'
   end

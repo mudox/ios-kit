@@ -8,7 +8,6 @@ PODS:
     - iOSKit/MBProgressHUD
     - iOSKit/NVActivityIndicatorView
     - iOSKit/ObjectiveC
-    - iOSKit/RxSwift
     - iOSKit/SVProgressHUD
     - iOSKit/SwiftyJSON
   - iOSKit/Core (0.1.0):
@@ -20,8 +19,6 @@ PODS:
   - iOSKit/NVActivityIndicatorView (0.1.0):
     - NVActivityIndicatorView
   - iOSKit/ObjectiveC (0.1.0)
-  - iOSKit/RxSwift (0.1.0):
-    - RxSwift
   - iOSKit/SVProgressHUD (0.1.0):
     - SVProgressHUD
   - iOSKit/SwiftyJSON (0.1.0):
@@ -69,7 +66,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   CocoaLumberjack: 3c8c74683302f9012bb168e1c4b7ae3c0b558431
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
-  iOSKit: c5c511c0dc32467ea843f6ec371c0c13e57f62ac
+  iOSKit: 6f9bfbb0961ac834e556a401867ed16e54f4959b
   JacKit: 1e8b3f7e1441a325c39d29f891af81bd0cf5c28d
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   Nimble: 391f07782af4b37914f9bd7b2ffbb952731b8202
